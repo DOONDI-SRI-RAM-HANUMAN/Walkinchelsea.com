@@ -6,19 +6,33 @@
 
 <title>WALKINCHELSEA — Premium Footwear</title>
 
-<meta name="description"
-content="WALKINCHELSEA — Premium Chelsea boots, loafers and luxury footwear. Walk in confidence.">
+<meta name="description" content="WALKINCHELSEA — Premium Chelsea boots, loafers and luxury footwear. Walk in confidence.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 
 <style>
 
 /* =========================================================
-   RESET
+   ROOT
 ========================================================= */
+
+:root{
+    --black:#060606;
+    --black2:#0b0b0b;
+    --black3:#111;
+    --card:#121212;
+    --gold:#c9a55b;
+    --gold2:#e3c77d;
+    --cream:#f4efe5;
+    --white:#fff;
+    --muted:#8c8c8c;
+    --muted2:#5f5f5f;
+    --line:rgba(255,255,255,.09);
+    --glass:rgba(255,255,255,.045);
+}
 
 *{
     margin:0;
@@ -28,17 +42,23 @@ content="WALKINCHELSEA — Premium Chelsea boots, loafers and luxury footwear. W
 
 html{
     scroll-behavior:smooth;
+    background:var(--black);
 }
 
 body{
     font-family:"DM Sans",sans-serif;
-    background:#080808;
-    color:#f4f0e8;
+    background:var(--black);
+    color:var(--cream);
     overflow-x:hidden;
 }
 
-body.no-scroll{
+body.lock{
     overflow:hidden;
+}
+
+img{
+    max-width:100%;
+    display:block;
 }
 
 button,
@@ -56,60 +76,39 @@ a{
     color:inherit;
 }
 
-img{
-    max-width:100%;
-    display:block;
-}
-
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-:root{
-    --black:#080808;
-    --black2:#101010;
-    --black3:#171717;
-    --gold:#c8a45a;
-    --gold2:#e4c982;
-    --cream:#f4f0e8;
-    --muted:#999;
-    --border:rgba(255,255,255,.10);
-    --glass:rgba(255,255,255,.045);
-}
-
 /* =========================================================
    SCROLLBAR
 ========================================================= */
 
 ::-webkit-scrollbar{
-    width:8px;
+    width:7px;
 }
 
 ::-webkit-scrollbar-track{
-    background:#080808;
+    background:#050505;
 }
 
 ::-webkit-scrollbar-thumb{
-    background:#4c3b20;
-    border-radius:10px;
+    background:#49391e;
+    border-radius:20px;
 }
 
 /* =========================================================
    LOADER
 ========================================================= */
 
-.loader{
+#loader{
     position:fixed;
     inset:0;
-    z-index:9999;
-    background:#080808;
+    z-index:99999;
+    background:#050505;
     display:flex;
     align-items:center;
     justify-content:center;
-    transition:.8s ease;
+    transition:opacity .8s ease,visibility .8s ease;
 }
 
-.loader.hide{
+#loader.hide{
     opacity:0;
     visibility:hidden;
 }
@@ -118,104 +117,108 @@ img{
     text-align:center;
 }
 
-.loader-logo{
+.loader-brand{
     font-family:"Playfair Display",serif;
-    font-size:38px;
-    letter-spacing:8px;
+    font-size:clamp(25px,5vw,48px);
+    letter-spacing:7px;
+}
+
+.loader-sub{
+    margin-top:10px;
+    font-size:8px;
+    letter-spacing:4px;
+    color:var(--gold);
 }
 
 .loader-line{
-    width:180px;
+    width:190px;
     height:1px;
-    background:#333;
-    margin:22px auto;
+    background:#222;
+    margin:25px auto;
     overflow:hidden;
 }
 
 .loader-line span{
     display:block;
-    width:50%;
     height:100%;
+    width:45%;
     background:var(--gold);
-    animation:loaderLine 1.2s infinite ease-in-out;
+    animation:loader 1.2s infinite;
 }
 
-@keyframes loaderLine{
-    0%{transform:translateX(-100%)}
-    100%{transform:translateX(300%)}
-}
-
-.loader-text{
-    font-size:10px;
-    letter-spacing:4px;
-    color:#777;
+@keyframes loader{
+    from{transform:translateX(-120%)}
+    to{transform:translateX(340%)}
 }
 
 /* =========================================================
    HEADER
 ========================================================= */
 
-header{
+.header{
     position:fixed;
     top:0;
     left:0;
     width:100%;
     height:82px;
-    z-index:1000;
-    background:rgba(8,8,8,.72);
-    backdrop-filter:blur(18px);
+    z-index:5000;
+    background:rgba(6,6,6,.68);
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
     border-bottom:1px solid rgba(255,255,255,.07);
 }
 
 .nav{
-    max-width:1450px;
+    width:min(1450px,94%);
     height:100%;
     margin:auto;
-    padding:0 35px;
     display:flex;
     align-items:center;
     justify-content:space-between;
+    gap:20px;
 }
 
-.logo{
+.brand{
     display:flex;
     align-items:center;
     gap:12px;
+    flex-shrink:0;
 }
 
-.logo img{
+.brand img{
     width:44px;
     height:44px;
     object-fit:contain;
+    border-radius:50%;
 }
 
-.logo-text{
+.brand-name{
     font-family:"Playfair Display",serif;
-    font-size:21px;
+    font-size:20px;
     letter-spacing:3px;
 }
 
-.logo-text small{
+.brand-sub{
     display:block;
     font-family:"DM Sans",sans-serif;
     font-size:7px;
     letter-spacing:3px;
     color:var(--gold);
-    margin-top:2px;
+    margin-top:3px;
 }
 
 .nav-links{
     display:flex;
     align-items:center;
-    gap:30px;
+    gap:24px;
 }
 
 .nav-links a{
-    font-size:12px;
-    text-transform:uppercase;
-    letter-spacing:1.7px;
-    color:#aaa;
     position:relative;
+    color:#aaa;
+    font-size:10px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
     transition:.3s;
 }
 
@@ -228,7 +231,7 @@ header{
     content:"";
     position:absolute;
     left:0;
-    bottom:-8px;
+    bottom:-9px;
     width:0;
     height:1px;
     background:var(--gold);
@@ -240,18 +243,18 @@ header{
     width:100%;
 }
 
-.nav-actions{
+.nav-tools{
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:8px;
 }
 
-.nav-icon{
-    width:42px;
-    height:42px;
-    border:1px solid var(--border);
-    background:rgba(255,255,255,.03);
-    color:white;
+.icon-btn{
+    width:40px;
+    height:40px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.025);
+    color:#ddd;
     border-radius:50%;
     display:flex;
     align-items:center;
@@ -259,10 +262,14 @@ header{
     transition:.3s;
 }
 
-.nav-icon:hover{
-    border-color:var(--gold);
+.icon-btn:hover{
     color:var(--gold);
+    border-color:rgba(201,165,91,.55);
     transform:translateY(-2px);
+}
+
+.cart-btn{
+    position:relative;
 }
 
 .cart-count{
@@ -272,26 +279,49 @@ header{
     min-width:17px;
     height:17px;
     padding:0 4px;
-    border-radius:50px;
+    border-radius:20px;
     background:var(--gold);
     color:#000;
-    font-size:9px;
+    font-size:8px;
+    font-weight:700;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-weight:700;
 }
 
-.cart-button{
-    position:relative;
-}
-
-.menu-btn{
+.mobile-trigger{
     display:none;
 }
 
 /* =========================================================
-   GLOBAL
+   MOBILE MENU
+========================================================= */
+
+.mobile-menu{
+    position:fixed;
+    inset:0;
+    z-index:4500;
+    background:#070707;
+    padding:120px 30px 40px;
+    transform:translateX(100%);
+    transition:.45s cubic-bezier(.77,0,.18,1);
+    overflow:auto;
+}
+
+.mobile-menu.open{
+    transform:translateX(0);
+}
+
+.mobile-menu a{
+    display:block;
+    padding:15px 0;
+    border-bottom:1px solid var(--line);
+    font-family:"Playfair Display",serif;
+    font-size:40px;
+}
+
+/* =========================================================
+   PAGE SYSTEM
 ========================================================= */
 
 .page{
@@ -312,39 +342,38 @@ header{
     padding:120px 0;
 }
 
-.section-heading{
+.eyebrow{
+    color:var(--gold);
+    font-size:9px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    margin-bottom:17px;
+}
+
+.section-head{
     display:flex;
     justify-content:space-between;
-    align-items:end;
-    gap:30px;
+    align-items:flex-end;
+    gap:40px;
     margin-bottom:55px;
 }
 
-.eyebrow{
-    font-size:10px;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    color:var(--gold);
-    margin-bottom:15px;
-}
-
-.heading{
+.title{
     font-family:"Playfair Display",serif;
-    font-size:clamp(42px,6vw,82px);
-    font-weight:500;
-    line-height:.95;
+    font-weight:400;
+    font-size:clamp(48px,6vw,82px);
+    line-height:.94;
 }
 
-.heading span{
+.title em{
     color:var(--gold);
-    font-style:italic;
 }
 
-.subheading{
+.description{
     max-width:520px;
-    color:#999;
-    font-size:14px;
-    line-height:1.8;
+    color:#888;
+    font-size:13px;
+    line-height:1.9;
 }
 
 .gold-line{
@@ -355,23 +384,23 @@ header{
 }
 
 .btn{
-    border:1px solid rgba(200,164,90,.45);
-    background:transparent;
-    color:white;
-    padding:15px 26px;
-    text-transform:uppercase;
-    letter-spacing:2px;
-    font-size:10px;
-    transition:.35s;
     display:inline-flex;
     align-items:center;
     justify-content:center;
     gap:10px;
+    padding:15px 25px;
+    border:1px solid rgba(201,165,91,.45);
+    background:transparent;
+    color:white;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:9px;
+    transition:.35s;
 }
 
 .btn:hover{
     background:var(--gold);
-    color:#000;
+    color:#050505;
     border-color:var(--gold);
     transform:translateY(-3px);
 }
@@ -383,7 +412,7 @@ header{
 }
 
 .btn-gold:hover{
-    background:#ead18e;
+    background:var(--gold2);
 }
 
 /* =========================================================
@@ -393,173 +422,173 @@ header{
 .hero{
     min-height:100vh;
     position:relative;
-    overflow:hidden;
     display:flex;
     align-items:center;
-}
-
-.hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
+    overflow:hidden;
     background:
-        radial-gradient(circle at 72% 45%,rgba(200,164,90,.18),transparent 30%),
-        radial-gradient(circle at 20% 80%,rgba(255,255,255,.04),transparent 25%);
+        radial-gradient(circle at 76% 48%,rgba(201,165,91,.16),transparent 29%),
+        radial-gradient(circle at 18% 85%,rgba(255,255,255,.035),transparent 25%);
 }
 
 .hero-grid{
     position:absolute;
     inset:0;
-    opacity:.08;
+    opacity:.075;
     background-image:
-        linear-gradient(rgba(255,255,255,.4) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.4) 1px,transparent 1px);
+        linear-gradient(rgba(255,255,255,.35) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.35) 1px,transparent 1px);
     background-size:80px 80px;
-    mask-image:linear-gradient(to bottom,transparent,black 30%,black 70%,transparent);
+    mask-image:linear-gradient(to bottom,transparent,black 25%,black 75%,transparent);
 }
 
 .hero-content{
     position:relative;
-    z-index:3;
+    z-index:5;
     width:min(1380px,92%);
     margin:auto;
     padding-top:80px;
 }
 
-.hero-small{
-    font-size:10px;
-    letter-spacing:5px;
+.hero-kicker{
     color:var(--gold);
+    font-size:9px;
+    letter-spacing:5px;
     text-transform:uppercase;
-    margin-bottom:25px;
+    margin-bottom:27px;
 }
 
 .hero h1{
     font-family:"Playfair Display",serif;
-    font-size:clamp(70px,10vw,155px);
-    line-height:.78;
-    font-weight:500;
-    max-width:850px;
-    letter-spacing:-5px;
+    font-size:clamp(72px,10vw,155px);
+    line-height:.76;
+    font-weight:400;
+    letter-spacing:-6px;
 }
 
 .hero h1 em{
     color:var(--gold);
-    font-weight:400;
+    font-style:italic;
 }
 
-.hero-desc{
-    margin-top:38px;
-    max-width:480px;
-    color:#999;
-    line-height:1.8;
-    font-size:14px;
+.hero-text{
+    margin-top:40px;
+    max-width:490px;
+    color:#8b8b8b;
+    line-height:1.85;
+    font-size:13px;
 }
 
-.hero-buttons{
+.hero-actions{
     display:flex;
-    gap:12px;
-    margin-top:35px;
+    gap:10px;
     flex-wrap:wrap;
+    margin-top:32px;
 }
 
-.hero-meta{
+.hero-object{
     position:absolute;
-    bottom:35px;
-    left:4%;
+    z-index:2;
+    width:500px;
+    height:500px;
     right:4%;
-    display:flex;
-    justify-content:space-between;
-    color:#666;
-    font-size:9px;
-    letter-spacing:3px;
-    text-transform:uppercase;
-}
-
-.hero-product{
-    position:absolute;
-    right:7%;
     top:50%;
     transform:translateY(-50%);
-    width:480px;
-    height:480px;
     perspective:1000px;
 }
 
-.hero-orbit{
+.orbit{
     position:absolute;
     inset:0;
-    border:1px solid rgba(200,164,90,.18);
+    border:1px solid rgba(201,165,91,.18);
     border-radius:50%;
-    animation:spin 18s linear infinite;
+    animation:orbit 18s linear infinite;
 }
 
-.hero-orbit:nth-child(2){
+.orbit:nth-child(2){
     inset:50px;
     transform:rotateX(70deg);
-    animation-duration:13s;
+    animation-duration:14s;
 }
 
-.hero-orbit:nth-child(3){
+.orbit:nth-child(3){
     inset:100px;
     transform:rotateY(70deg);
-    animation-duration:10s;
+    animation-duration:11s;
 }
 
-@keyframes spin{
+.orbit:nth-child(4){
+    inset:145px;
+    border-color:rgba(255,255,255,.07);
+    animation-duration:9s;
+}
+
+@keyframes orbit{
     to{transform:rotate(360deg)}
 }
 
-.hero-shoe{
+.hero-core{
     position:absolute;
-    width:350px;
-    height:350px;
+    width:310px;
+    height:310px;
     left:50%;
     top:50%;
-    transform:translate(-50%,-50%) rotate(-12deg);
+    transform:translate(-50%,-50%);
     border-radius:50%;
     background:
-        radial-gradient(circle,rgba(200,164,90,.22),transparent 55%),
+        radial-gradient(circle at 35% 30%,rgba(255,255,255,.09),transparent 18%),
+        radial-gradient(circle,rgba(201,165,91,.16),transparent 60%),
         #111;
     box-shadow:
-        0 0 80px rgba(200,164,90,.12),
-        inset 0 0 70px rgba(255,255,255,.03);
+        0 0 100px rgba(201,165,91,.09),
+        inset 0 0 80px rgba(255,255,255,.025);
     display:flex;
     align-items:center;
     justify-content:center;
 }
 
-.hero-shoe::after{
-    content:"WC";
+.hero-core span{
     font-family:"Playfair Display",serif;
-    color:rgba(200,164,90,.55);
-    font-size:90px;
-    letter-spacing:5px;
+    font-size:80px;
+    color:rgba(201,165,91,.48);
+    letter-spacing:4px;
 }
 
-.floating-card{
+.hero-card{
     position:absolute;
-    right:18%;
-    bottom:14%;
-    z-index:5;
-    padding:18px 20px;
-    background:rgba(12,12,12,.72);
-    backdrop-filter:blur(15px);
-    border:1px solid var(--border);
-    min-width:170px;
+    right:11%;
+    bottom:12%;
+    z-index:10;
+    padding:17px 20px;
+    min-width:180px;
+    background:rgba(10,10,10,.7);
+    border:1px solid var(--line);
+    backdrop-filter:blur(16px);
 }
 
-.floating-card small{
+.hero-card small{
     display:block;
-    color:#777;
-    font-size:8px;
-    letter-spacing:2px;
-    margin-bottom:6px;
+    color:#666;
+    font-size:7px;
+    letter-spacing:3px;
+    margin-bottom:7px;
 }
 
-.floating-card strong{
+.hero-card strong{
     font-family:"Playfair Display",serif;
-    font-size:17px;
+    font-size:18px;
+    font-weight:400;
+}
+
+.hero-bottom{
+    position:absolute;
+    bottom:25px;
+    left:4%;
+    right:4%;
+    display:flex;
+    justify-content:space-between;
+    color:#505050;
+    font-size:8px;
+    letter-spacing:3px;
 }
 
 /* =========================================================
@@ -567,24 +596,25 @@ header{
 ========================================================= */
 
 .marquee{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
     overflow:hidden;
-    border-top:1px solid var(--border);
-    border-bottom:1px solid var(--border);
-    padding:18px 0;
     white-space:nowrap;
-    background:#0b0b0b;
+    padding:18px 0;
+    background:#090909;
 }
 
 .marquee-track{
     display:inline-flex;
-    gap:50px;
-    animation:marquee 25s linear infinite;
+    align-items:center;
+    gap:45px;
+    animation:marquee 28s linear infinite;
 }
 
 .marquee span{
     font-family:"Playfair Display",serif;
     font-size:22px;
-    color:#777;
+    color:#686868;
 }
 
 .marquee b{
@@ -597,196 +627,309 @@ header{
 }
 
 /* =========================================================
-   CATEGORY SHOWCASE
+   CATEGORY
 ========================================================= */
 
 .category-grid{
     display:grid;
     grid-template-columns:2fr 1fr 1fr;
-    gap:15px;
+    gap:14px;
 }
 
-.category-card{
+.category{
+    min-height:440px;
     position:relative;
-    min-height:430px;
     overflow:hidden;
-    background:#111;
-    border:1px solid var(--border);
+    border:1px solid var(--line);
+    background:#101010;
 }
 
-.category-card.small{
-    min-height:430px;
-}
-
-.category-card::before{
-    content:"";
+.category-bg{
     position:absolute;
     inset:0;
-    background:linear-gradient(to top,rgba(0,0,0,.9),transparent 60%);
-    z-index:1;
-}
-
-.category-card-bg{
-    position:absolute;
-    inset:0;
-    background:
-        radial-gradient(circle at 50% 40%,rgba(200,164,90,.22),transparent 35%),
-        linear-gradient(145deg,#1c1c1c,#080808);
     transition:.7s;
+    background:
+        radial-gradient(circle at 50% 42%,rgba(201,165,91,.22),transparent 34%),
+        linear-gradient(145deg,#191919,#070707);
 }
 
-.category-card:hover .category-card-bg{
+.category:hover .category-bg{
     transform:scale(1.08);
 }
 
-.category-card-content{
+.category::after{
+    content:"";
     position:absolute;
-    z-index:2;
+    inset:0;
+    background:linear-gradient(to top,rgba(0,0,0,.95),transparent 60%);
+}
+
+.category-content{
+    position:absolute;
     left:28px;
+    right:20px;
     bottom:28px;
+    z-index:2;
 }
 
-.category-card h3{
+.category-content h3{
     font-family:"Playfair Display",serif;
-    font-size:35px;
     font-weight:400;
+    font-size:38px;
 }
 
-.category-card p{
-    color:#aaa;
+.category-content p{
+    color:#777;
     font-size:11px;
     margin-top:8px;
 }
 
-.category-card a{
+.category-content a{
     display:inline-block;
     margin-top:18px;
-    font-size:9px;
-    text-transform:uppercase;
-    letter-spacing:2px;
     color:var(--gold);
+    font-size:8px;
+    letter-spacing:2px;
+    text-transform:uppercase;
 }
 
 /* =========================================================
    FEATURE STRIP
 ========================================================= */
 
-.features{
+.feature-strip{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    border-top:1px solid var(--border);
-    border-bottom:1px solid var(--border);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
 }
 
 .feature{
-    padding:30px;
-    border-right:1px solid var(--border);
+    padding:32px 25px;
+    border-right:1px solid var(--line);
 }
 
 .feature:last-child{
     border-right:0;
 }
 
-.feature-number{
+.feature-no{
     color:var(--gold);
-    font-size:10px;
+    font-size:8px;
     letter-spacing:2px;
 }
 
-.feature h4{
+.feature h3{
     font-family:"Playfair Display",serif;
     font-size:20px;
     font-weight:400;
-    margin:12px 0 8px;
+    margin:12px 0 7px;
 }
 
 .feature p{
-    color:#777;
-    font-size:11px;
+    color:#666;
+    font-size:10px;
     line-height:1.7;
 }
 
 /* =========================================================
-   PRODUCT GRID
+   EDITORIAL
 ========================================================= */
 
-.product-toolbar{
+.editorial{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:80px;
+    align-items:center;
+}
+
+.editorial-art{
+    height:600px;
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:
+        radial-gradient(circle at center,rgba(201,165,91,.18),transparent 40%),
+        #101010;
+}
+
+.editorial-art::before{
+    content:"";
+    position:absolute;
+    width:390px;
+    height:390px;
+    border:1px solid rgba(201,165,91,.25);
+    border-radius:50%;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    animation:orbit 22s linear infinite;
+}
+
+.editorial-art::after{
+    content:"";
+    position:absolute;
+    width:270px;
+    height:270px;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:50%;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+
+.editorial-mark{
+    position:absolute;
+    left:30px;
+    bottom:25px;
+    font-family:"Playfair Display",serif;
+    font-size:70px;
+    color:rgba(201,165,91,.55);
+}
+
+.editorial-copy h2{
+    font-family:"Playfair Display",serif;
+    font-size:70px;
+    font-weight:400;
+    line-height:.9;
+}
+
+.editorial-copy h2 em{
+    color:var(--gold);
+}
+
+.editorial-copy p{
+    color:#888;
+    font-size:13px;
+    line-height:1.9;
+    margin:20px 0;
+}
+
+/* =========================================================
+   PAGE HERO
+========================================================= */
+
+.page-hero{
+    min-height:56vh;
+    display:flex;
+    align-items:flex-end;
+    padding:160px 0 75px;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 80% 45%,rgba(201,165,91,.11),transparent 28%);
+    border-bottom:1px solid var(--line);
+}
+
+.page-hero-number{
+    position:absolute;
+    right:5%;
+    bottom:20px;
+    font-family:"Playfair Display",serif;
+    font-size:170px;
+    color:rgba(255,255,255,.025);
+}
+
+.page-title{
+    font-family:"Playfair Display",serif;
+    font-weight:400;
+    font-size:clamp(65px,10vw,135px);
+    line-height:.82;
+    letter-spacing:-4px;
+}
+
+.page-title em{
+    color:var(--gold);
+}
+
+/* =========================================================
+   PRODUCT TOOLBAR
+========================================================= */
+
+.toolbar{
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:15px;
-    margin-bottom:35px;
     flex-wrap:wrap;
+    margin-bottom:35px;
 }
 
 .filters{
     display:flex;
-    gap:8px;
     flex-wrap:wrap;
+    gap:7px;
 }
 
-.filter-btn{
-    padding:10px 16px;
-    border:1px solid var(--border);
+.filter{
+    border:1px solid var(--line);
     background:transparent;
-    color:#888;
-    font-size:9px;
+    color:#777;
+    padding:10px 15px;
+    font-size:8px;
     text-transform:uppercase;
     letter-spacing:1.5px;
     transition:.3s;
 }
 
-.filter-btn.active,
-.filter-btn:hover{
+.filter:hover,
+.filter.active{
     background:var(--gold);
-    color:#000;
     border-color:var(--gold);
+    color:#000;
 }
 
-.search-sort{
+.search-tools{
     display:flex;
-    gap:8px;
+    gap:7px;
 }
 
-.search-box,
-.sort-box{
-    border:1px solid var(--border);
+.search,
+.sort{
     background:#101010;
     color:#ddd;
-    padding:11px 14px;
+    border:1px solid var(--line);
     outline:none;
-    font-size:11px;
+    padding:11px 13px;
+    font-size:10px;
 }
 
-.search-box{
+.search{
     width:210px;
 }
+
+.sort{
+    min-width:160px;
+}
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
 
 .product-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:18px;
+    gap:17px;
 }
 
-.product-card{
-    position:relative;
+.product{
     background:#101010;
-    border:1px solid rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.065);
     overflow:hidden;
     transition:.45s;
 }
 
-.product-card:hover{
-    transform:translateY(-8px);
-    border-color:rgba(200,164,90,.3);
-    box-shadow:0 25px 60px rgba(0,0,0,.35);
+.product:hover{
+    transform:translateY(-7px);
+    border-color:rgba(201,165,91,.35);
+    box-shadow:0 25px 60px rgba(0,0,0,.38);
 }
 
 .product-image{
-    height:330px;
+    height:340px;
     position:relative;
     overflow:hidden;
-    background:#171717;
+    background:#181818;
 }
 
 .product-image img{
@@ -796,204 +939,93 @@ header{
     transition:.7s;
 }
 
-.product-card:hover .product-image img{
-    transform:scale(1.07);
+.product:hover .product-image img{
+    transform:scale(1.06);
 }
 
-.product-badge{
+.product-tag{
     position:absolute;
-    top:14px;
-    left:14px;
-    z-index:2;
-    background:#080808;
-    color:var(--gold);
+    left:13px;
+    top:13px;
+    z-index:3;
     padding:7px 9px;
+    background:rgba(0,0,0,.72);
+    color:var(--gold);
     font-size:7px;
     letter-spacing:1.5px;
     text-transform:uppercase;
+    backdrop-filter:blur(8px);
 }
 
-.product-wishlist{
+.heart{
     position:absolute;
-    right:14px;
-    top:14px;
-    z-index:3;
+    right:13px;
+    top:13px;
+    z-index:4;
     width:32px;
     height:32px;
-    border:1px solid rgba(255,255,255,.15);
-    background:rgba(0,0,0,.45);
-    color:white;
     border-radius:50%;
+    background:rgba(0,0,0,.55);
+    border:1px solid rgba(255,255,255,.15);
+    color:#fff;
 }
 
 .product-info{
-    padding:20px;
+    padding:19px;
 }
 
 .product-category{
-    font-size:8px;
     color:var(--gold);
-    text-transform:uppercase;
+    font-size:7px;
     letter-spacing:2px;
+    text-transform:uppercase;
 }
 
 .product-name{
     font-family:"Playfair Display",serif;
     font-size:20px;
     font-weight:400;
-    margin:7px 0;
+    margin-top:7px;
 }
 
-.product-bottom{
+.product-row{
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    margin-top:14px;
+    justify-content:space-between;
+    gap:8px;
+    margin-top:15px;
 }
 
 .price{
-    color:#eee;
     font-size:13px;
+    color:#eee;
 }
 
-.product-actions{
+.product-buttons{
     display:flex;
     gap:6px;
 }
 
-.mini-btn{
-    width:34px;
-    height:34px;
-    border:1px solid var(--border);
+.mini{
+    width:33px;
+    height:33px;
+    border:1px solid var(--line);
     background:transparent;
-    color:white;
+    color:#ddd;
     transition:.3s;
 }
 
-.mini-btn:hover{
+.mini:hover{
     background:var(--gold);
     color:#000;
     border-color:var(--gold);
 }
 
-.no-products{
+.empty{
     grid-column:1/-1;
     padding:80px 20px;
     text-align:center;
-    color:#777;
-}
-
-/* =========================================================
-   SHOP HERO
-========================================================= */
-
-.page-hero{
-    min-height:55vh;
-    padding-top:170px;
-    display:flex;
-    align-items:center;
-    position:relative;
-    overflow:hidden;
-    background:
-        radial-gradient(circle at 80% 50%,rgba(200,164,90,.12),transparent 30%);
-}
-
-.page-hero h1{
-    font-family:"Playfair Display",serif;
-    font-size:clamp(60px,9vw,130px);
-    font-weight:400;
-    line-height:.9;
-}
-
-.page-hero h1 span{
-    color:var(--gold);
-    font-style:italic;
-}
-
-.page-hero-number{
-    position:absolute;
-    right:7%;
-    bottom:40px;
-    font-family:"Playfair Display",serif;
-    font-size:130px;
-    color:rgba(255,255,255,.025);
-}
-
-/* =========================================================
-   EDITORIAL
-========================================================= */
-
-.editorial{
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
-    gap:60px;
-    align-items:center;
-}
-
-.editorial-visual{
-    min-height:580px;
-    position:relative;
-    background:
-        radial-gradient(circle at center,rgba(200,164,90,.25),transparent 40%),
-        #111;
-    border:1px solid var(--border);
-    overflow:hidden;
-}
-
-.editorial-circle{
-    position:absolute;
-    width:360px;
-    height:360px;
-    border:1px solid rgba(200,164,90,.3);
-    border-radius:50%;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    animation:spin 20s linear infinite;
-}
-
-.editorial-circle::before,
-.editorial-circle::after{
-    content:"";
-    position:absolute;
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:50%;
-}
-
-.editorial-circle::before{
-    inset:35px;
-}
-
-.editorial-circle::after{
-    inset:75px;
-}
-
-.editorial-visual-text{
-    position:absolute;
-    left:30px;
-    bottom:30px;
-    font-family:"Playfair Display",serif;
-    font-size:60px;
-    color:#eee;
-}
-
-.editorial-content h2{
-    font-family:"Playfair Display",serif;
-    font-size:65px;
-    line-height:1;
-    font-weight:400;
-}
-
-.editorial-content h2 span{
-    color:var(--gold);
-    font-style:italic;
-}
-
-.editorial-content p{
-    color:#999;
-    line-height:1.9;
-    font-size:14px;
-    margin:25px 0;
+    color:#666;
 }
 
 /* =========================================================
@@ -1003,31 +1035,32 @@ header{
 .stats{
     display:grid;
     grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--line);
     margin-top:70px;
-    border-top:1px solid var(--border);
 }
 
 .stat{
     padding:35px 20px;
-    border-right:1px solid var(--border);
+    border-right:1px solid var(--line);
 }
 
 .stat:last-child{
-    border:0;
+    border-right:0;
 }
 
 .stat strong{
     font-family:"Playfair Display",serif;
-    font-size:45px;
     font-weight:400;
+    font-size:48px;
     color:var(--gold);
 }
 
-.stat p{
-    color:#777;
-    font-size:10px;
-    text-transform:uppercase;
+.stat span{
+    display:block;
+    color:#666;
+    font-size:8px;
     letter-spacing:2px;
+    text-transform:uppercase;
     margin-top:7px;
 }
 
@@ -1038,59 +1071,54 @@ header{
 .journal-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:18px;
+    gap:17px;
 }
 
 .journal-card{
-    min-height:430px;
-    background:#111;
-    border:1px solid var(--border);
-    position:relative;
-    overflow:hidden;
+    border:1px solid var(--line);
+    background:#101010;
 }
 
-.journal-image{
-    height:250px;
-    background:
-        radial-gradient(circle at center,rgba(200,164,90,.18),transparent 40%),
-        linear-gradient(145deg,#1a1a1a,#090909);
+.journal-art{
+    height:270px;
     position:relative;
-}
-
-.journal-image::after{
-    content:"WC";
-    position:absolute;
-    inset:0;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-family:"Playfair Display",serif;
-    font-size:65px;
-    color:rgba(200,164,90,.35);
+    overflow:hidden;
+    background:
+        radial-gradient(circle,rgba(201,165,91,.18),transparent 38%),
+        linear-gradient(145deg,#191919,#080808);
 }
 
-.journal-content{
+.journal-art span{
+    font-family:"Playfair Display",serif;
+    font-size:70px;
+    color:rgba(201,165,91,.35);
+}
+
+.journal-copy{
     padding:25px;
 }
 
-.journal-content small{
+.journal-copy small{
     color:var(--gold);
-    font-size:8px;
+    font-size:7px;
     letter-spacing:2px;
     text-transform:uppercase;
 }
 
-.journal-content h3{
+.journal-copy h3{
     font-family:"Playfair Display",serif;
     font-weight:400;
     font-size:25px;
-    margin:10px 0;
+    margin:9px 0;
 }
 
-.journal-content p{
-    color:#777;
-    line-height:1.7;
+.journal-copy p{
+    color:#707070;
     font-size:11px;
+    line-height:1.8;
 }
 
 /* =========================================================
@@ -1105,57 +1133,57 @@ header{
 
 .contact-title{
     font-family:"Playfair Display",serif;
-    font-size:70px;
-    line-height:.95;
+    font-size:75px;
     font-weight:400;
+    line-height:.9;
 }
 
-.contact-title span{
+.contact-title em{
     color:var(--gold);
-    font-style:italic;
 }
 
-.contact-info{
-    margin-top:40px;
+.contact-list{
+    margin-top:45px;
 }
 
-.contact-row{
-    padding:22px 0;
-    border-bottom:1px solid var(--border);
+.contact-item{
+    padding:21px 0;
+    border-bottom:1px solid var(--line);
 }
 
-.contact-row small{
+.contact-item small{
     display:block;
     color:var(--gold);
-    font-size:8px;
+    font-size:7px;
     letter-spacing:3px;
     text-transform:uppercase;
     margin-bottom:7px;
 }
 
-.contact-row a,
-.contact-row p{
+.contact-item p,
+.contact-item a{
     color:#ddd;
-    font-size:14px;
+    font-size:13px;
+    line-height:1.7;
 }
 
-.contact-card{
-    background:#111;
-    border:1px solid var(--border);
+.contact-box{
+    border:1px solid var(--line);
+    background:#101010;
     padding:45px;
 }
 
-.contact-card h3{
+.contact-box h2{
     font-family:"Playfair Display",serif;
-    font-size:35px;
+    font-size:38px;
     font-weight:400;
 }
 
-.contact-card p{
+.contact-box p{
     color:#777;
     line-height:1.8;
-    font-size:13px;
-    margin:15px 0 25px;
+    font-size:12px;
+    margin:15px 0 28px;
 }
 
 /* =========================================================
@@ -1163,38 +1191,37 @@ header{
 ========================================================= */
 
 .newsletter{
-    background:#111;
-    border-top:1px solid var(--border);
-    border-bottom:1px solid var(--border);
-    padding:80px 0;
+    padding:90px 0;
     text-align:center;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:#101010;
 }
 
 .newsletter h2{
     font-family:"Playfair Display",serif;
-    font-size:55px;
+    font-size:clamp(38px,5vw,65px);
     font-weight:400;
 }
 
 .newsletter p{
     color:#777;
-    margin:15px auto 30px;
-    max-width:500px;
-    font-size:13px;
+    font-size:12px;
+    margin:14px auto 30px;
 }
 
 .newsletter-form{
-    display:flex;
     max-width:500px;
     margin:auto;
+    display:flex;
 }
 
 .newsletter-form input{
     flex:1;
     background:#080808;
-    border:1px solid var(--border);
+    border:1px solid var(--line);
+    color:#fff;
     padding:15px;
-    color:white;
     outline:none;
 }
 
@@ -1202,10 +1229,9 @@ header{
    FOOTER
 ========================================================= */
 
-footer{
+.footer{
     background:#050505;
-    border-top:1px solid var(--border);
-    padding:70px 0 25px;
+    padding:75px 0 25px;
 }
 
 .footer-grid{
@@ -1217,31 +1243,31 @@ footer{
 
 .footer-brand h2{
     font-family:"Playfair Display",serif;
-    font-size:30px;
     font-weight:400;
+    font-size:30px;
     letter-spacing:2px;
 }
 
 .footer-brand p{
-    max-width:350px;
-    color:#666;
-    line-height:1.8;
+    max-width:370px;
+    color:#606060;
     font-size:11px;
+    line-height:1.8;
     margin-top:15px;
 }
 
 .footer-col h4{
-    font-size:9px;
-    text-transform:uppercase;
-    letter-spacing:2px;
     color:var(--gold);
-    margin-bottom:20px;
+    font-size:8px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:18px;
 }
 
 .footer-col a{
     display:block;
-    color:#777;
-    font-size:11px;
+    color:#686868;
+    font-size:10px;
     margin:11px 0;
     transition:.3s;
 }
@@ -1251,25 +1277,25 @@ footer{
 }
 
 .footer-bottom{
-    border-top:1px solid var(--border);
-    padding-top:25px;
+    border-top:1px solid var(--line);
+    padding-top:23px;
     display:flex;
     justify-content:space-between;
-    color:#555;
-    font-size:9px;
+    color:#484848;
+    font-size:8px;
     letter-spacing:1px;
 }
 
 /* =========================================================
-   CART DRAWER
+   CART
 ========================================================= */
 
 .cart-overlay{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.7);
-    backdrop-filter:blur(5px);
-    z-index:2000;
+    z-index:8000;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(6px);
     opacity:0;
     visibility:hidden;
     transition:.35s;
@@ -1280,45 +1306,45 @@ footer{
     visibility:visible;
 }
 
-.cart-drawer{
+.cart{
     position:absolute;
-    top:0;
     right:0;
+    top:0;
     height:100%;
     width:min(470px,100%);
     background:#101010;
-    border-left:1px solid var(--border);
+    border-left:1px solid var(--line);
     transform:translateX(100%);
     transition:.45s cubic-bezier(.77,0,.18,1);
     display:flex;
     flex-direction:column;
 }
 
-.cart-overlay.open .cart-drawer{
+.cart-overlay.open .cart{
     transform:translateX(0);
 }
 
-.cart-head{
-    padding:25px;
-    border-bottom:1px solid var(--border);
+.cart-header{
+    padding:24px;
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid var(--line);
 }
 
-.cart-head h3{
+.cart-header h2{
     font-family:"Playfair Display",serif;
-    font-size:27px;
     font-weight:400;
+    font-size:28px;
 }
 
-.close-btn{
+.close{
     width:35px;
     height:35px;
-    background:transparent;
-    border:1px solid var(--border);
-    color:white;
     border-radius:50%;
+    border:1px solid var(--line);
+    background:transparent;
+    color:#fff;
 }
 
 .cart-items{
@@ -1331,9 +1357,9 @@ footer{
     display:grid;
     grid-template-columns:75px 1fr auto;
     gap:14px;
-    align-items:center;
     padding:15px 0;
-    border-bottom:1px solid var(--border);
+    border-bottom:1px solid var(--line);
+    align-items:center;
 }
 
 .cart-item img{
@@ -1344,36 +1370,36 @@ footer{
 
 .cart-item h4{
     font-family:"Playfair Display",serif;
-    font-weight:400;
     font-size:15px;
+    font-weight:400;
 }
 
 .cart-item p{
     color:var(--gold);
-    font-size:11px;
+    font-size:10px;
     margin-top:5px;
 }
 
-.remove-cart{
-    border:0;
+.remove{
     background:none;
-    color:#777;
-    font-size:12px;
+    border:0;
+    color:#666;
+    font-size:10px;
 }
 
 .cart-footer{
-    padding:25px;
-    border-top:1px solid var(--border);
+    padding:24px;
+    border-top:1px solid var(--line);
 }
 
-.cart-total{
+.total{
     display:flex;
     justify-content:space-between;
-    margin-bottom:18px;
-    font-size:14px;
+    margin-bottom:17px;
+    font-size:13px;
 }
 
-.cart-total strong{
+.total strong{
     color:var(--gold);
 }
 
@@ -1384,8 +1410,8 @@ footer{
 .modal-overlay{
     position:fixed;
     inset:0;
-    z-index:3000;
-    background:rgba(0,0,0,.8);
+    z-index:9000;
+    background:rgba(0,0,0,.82);
     backdrop-filter:blur(10px);
     display:flex;
     align-items:center;
@@ -1402,130 +1428,99 @@ footer{
 }
 
 .modal{
-    width:min(950px,100%);
-    max-height:90vh;
+    width:min(980px,100%);
+    max-height:92vh;
     overflow:auto;
-    background:#101010;
-    border:1px solid var(--border);
     display:grid;
     grid-template-columns:1fr 1fr;
-    transform:translateY(30px);
+    background:#101010;
+    border:1px solid var(--line);
+    transform:translateY(25px);
     transition:.4s;
 }
 
 .modal-overlay.open .modal{
-    transform:translateY(0);
+    transform:none;
 }
 
-.modal-image{
-    min-height:550px;
+.modal-photo{
+    min-height:580px;
     background:#171717;
 }
 
-.modal-image img{
+.modal-photo img{
     width:100%;
     height:100%;
     object-fit:cover;
 }
 
-.modal-info{
-    padding:45px;
+.modal-content{
     position:relative;
+    padding:50px;
 }
 
-.modal-close{
+.modal-content .close{
     position:absolute;
-    top:20px;
     right:20px;
-    width:35px;
-    height:35px;
-    border-radius:50%;
-    border:1px solid var(--border);
-    background:transparent;
-    color:white;
+    top:20px;
 }
 
-.modal-category{
+.modal-cat{
     color:var(--gold);
-    font-size:9px;
+    font-size:8px;
     letter-spacing:3px;
     text-transform:uppercase;
 }
 
-.modal-info h2{
+.modal-content h2{
     font-family:"Playfair Display",serif;
-    font-size:45px;
     font-weight:400;
+    font-size:48px;
+    line-height:1;
     margin:15px 0;
 }
 
 .modal-price{
     color:var(--gold);
     font-size:18px;
-    margin-bottom:25px;
 }
 
-.modal-info p{
-    color:#888;
-    line-height:1.8;
-    font-size:13px;
+.modal-content p{
+    color:#777;
+    font-size:12px;
+    line-height:1.9;
 }
 
-.modal-buttons{
+.modal-actions{
     display:flex;
-    gap:10px;
+    flex-wrap:wrap;
+    gap:8px;
     margin-top:30px;
 }
 
 /* =========================================================
-   FLOATING WHATSAPP
+   WHATSAPP
 ========================================================= */
 
-.whatsapp-float{
+.whatsapp{
     position:fixed;
-    right:25px;
-    bottom:25px;
+    right:23px;
+    bottom:23px;
     width:58px;
     height:58px;
+    z-index:6000;
     border-radius:50%;
     background:#25d366;
-    color:white;
+    color:#fff;
     display:flex;
     align-items:center;
     justify-content:center;
-    z-index:900;
-    box-shadow:0 10px 35px rgba(37,211,102,.25);
+    box-shadow:0 12px 40px rgba(37,211,102,.23);
     transition:.3s;
 }
 
-.whatsapp-float:hover{
+.whatsapp:hover{
     transform:translateY(-5px) scale(1.05);
-}
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-.mobile-menu{
-    position:fixed;
-    inset:0;
-    background:#080808;
-    z-index:1100;
-    padding:120px 30px 30px;
-    transform:translateX(100%);
-    transition:.4s;
-}
-
-.mobile-menu.open{
-    transform:translateX(0);
-}
-
-.mobile-menu a{
-    display:block;
-    font-family:"Playfair Display",serif;
-    font-size:40px;
-    padding:13px 0;
-    border-bottom:1px solid var(--border);
 }
 
 /* =========================================================
@@ -1534,7 +1529,7 @@ footer{
 
 .reveal{
     opacity:0;
-    transform:translateY(30px);
+    transform:translateY(25px);
     transition:1s ease;
 }
 
@@ -1547,96 +1542,79 @@ footer{
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:1100px){
+@media(max-width:1150px){
 
     .nav-links{
         display:none;
     }
 
-    .menu-btn{
+    .mobile-trigger{
         display:flex;
     }
 
-    .hero-product{
+    .hero-object{
+        right:-130px;
         opacity:.45;
-        right:-120px;
     }
 
     .product-grid{
         grid-template-columns:repeat(3,1fr);
     }
 
-    .category-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .category-card:first-child{
-        grid-column:1/-1;
-    }
-
     .footer-grid{
         grid-template-columns:1fr 1fr;
     }
+
 }
 
-@media(max-width:800px){
-
-    .nav{
-        padding:0 18px;
-    }
-
-    .logo-text{
-        font-size:16px;
-    }
-
-    .logo img{
-        width:36px;
-        height:36px;
-    }
-
-    .section{
-        padding:85px 0;
-    }
+@media(max-width:850px){
 
     .hero{
         min-height:850px;
     }
 
     .hero h1{
-        font-size:70px;
-        letter-spacing:-3px;
+        font-size:72px;
     }
 
-    .hero-product{
-        width:350px;
-        height:350px;
-        top:62%;
+    .hero-object{
+        width:360px;
+        height:360px;
+        top:65%;
         right:-100px;
-        opacity:.35;
     }
 
-    .hero-meta{
-        display:none;
+    .hero-core{
+        width:230px;
+        height:230px;
     }
 
-    .features{
+    .hero-core span{
+        font-size:60px;
+    }
+
+    .category-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .category:first-child{
+        grid-column:1/-1;
+    }
+
+    .feature-strip{
         grid-template-columns:1fr 1fr;
     }
 
     .feature{
-        border-bottom:1px solid var(--border);
-    }
-
-    .product-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .product-image{
-        height:280px;
+        border-bottom:1px solid var(--line);
     }
 
     .editorial{
         grid-template-columns:1fr;
+    }
+
+    .editorial-art{
+        height:480px;
     }
 
     .contact-grid{
@@ -1653,68 +1631,91 @@ footer{
     }
 
     .stat{
-        border-bottom:1px solid var(--border);
+        border-bottom:1px solid var(--line);
     }
 
     .modal{
         grid-template-columns:1fr;
     }
 
-    .modal-image{
-        min-height:330px;
+    .modal-photo{
+        min-height:350px;
     }
 
-    .modal-info{
-        padding:30px;
+}
+
+@media(max-width:600px){
+
+    .header{
+        height:70px;
+    }
+
+    .nav{
+        width:94%;
+    }
+
+    .brand img{
+        width:36px;
+        height:36px;
+    }
+
+    .brand-name{
+        font-size:15px;
+    }
+
+    .brand-sub{
+        font-size:6px;
+    }
+
+    .hero{
+        min-height:820px;
+    }
+
+    .hero h1{
+        font-size:56px;
+        letter-spacing:-3px;
+    }
+
+    .hero-text{
+        max-width:330px;
+    }
+
+    .hero-object{
+        top:70%;
+        right:-110px;
+        opacity:.32;
+    }
+
+    .hero-bottom{
+        display:none;
+    }
+
+    .section{
+        padding:85px 0;
+    }
+
+    .section-head{
+        display:block;
     }
 
     .category-grid{
         grid-template-columns:1fr;
     }
 
-    .category-card:first-child{
+    .category:first-child{
         grid-column:auto;
     }
 
-    .category-card{
+    .category{
         min-height:330px;
     }
-}
 
-@media(max-width:550px){
-
-    .nav-actions .nav-icon:first-child{
-        display:none;
+    .feature-strip{
+        grid-template-columns:1fr;
     }
 
-    .hero h1{
-        font-size:55px;
-    }
-
-    .hero-desc{
-        max-width:330px;
-    }
-
-    .hero-product{
-        top:68%;
-        right:-120px;
-    }
-
-    .section-heading{
-        display:block;
-    }
-
-    .product-toolbar{
-        align-items:stretch;
-    }
-
-    .search-sort{
-        width:100%;
-        flex-direction:column;
-    }
-
-    .search-box{
-        width:100%;
+    .feature{
+        border-right:0;
     }
 
     .product-grid{
@@ -1723,25 +1724,34 @@ footer{
     }
 
     .product-image{
-        height:230px;
+        height:225px;
     }
 
     .product-info{
-        padding:14px;
+        padding:13px;
     }
 
     .product-name{
         font-size:16px;
     }
 
-    .product-bottom{
+    .product-row{
+        flex-direction:column;
         align-items:flex-start;
-        gap:8px;
+    }
+
+    .search-tools{
+        width:100%;
         flex-direction:column;
     }
 
-    .features{
-        grid-template-columns:1fr;
+    .search,
+    .sort{
+        width:100%;
+    }
+
+    .contact-title{
+        font-size:57px;
     }
 
     .footer-grid{
@@ -1753,18 +1763,19 @@ footer{
         gap:10px;
     }
 
-    .newsletter h2{
-        font-size:40px;
-    }
-
     .newsletter-form{
         flex-direction:column;
-        gap:8px;
+        gap:7px;
     }
 
-    .contact-title{
-        font-size:55px;
+    .modal-content{
+        padding:30px;
     }
+
+    .modal-content h2{
+        font-size:38px;
+    }
+
 }
 
 </style>
@@ -1776,11 +1787,11 @@ footer{
      LOADER
 ===================================================== -->
 
-<div class="loader" id="loader">
+<div id="loader">
     <div class="loader-inner">
-        <div class="loader-logo">WALKINCHELSEA</div>
+        <div class="loader-brand">WALKINCHELSEA</div>
+        <div class="loader-sub">PREMIUM FOOTWEAR</div>
         <div class="loader-line"><span></span></div>
-        <div class="loader-text">PREMIUM FOOTWEAR</div>
     </div>
 </div>
 
@@ -1789,50 +1800,48 @@ footer{
      HEADER
 ===================================================== -->
 
-<header>
+<header class="header">
 
 <nav class="nav">
 
-    <a href="#home" class="logo nav-link">
-        <img src="logo.jpg" alt="WALKINCHELSEA Logo">
-        <div class="logo-text">
-            WALKINCHELSEA
-            <small>PREMIUM FOOTWEAR</small>
+    <a href="#home" class="brand">
+
+        <img src="logo.jpg" alt="WALKINCHELSEA">
+
+        <div>
+            <div class="brand-name">WALKINCHELSEA</div>
+            <span class="brand-sub">PREMIUM FOOTWEAR</span>
         </div>
+
     </a>
+
 
     <div class="nav-links">
 
-        <a href="#home" class="nav-link">Home</a>
-
-        <a href="#shop" class="nav-link">Collection</a>
-
-        <a href="#chelsea" class="nav-link">Chelsea</a>
-
-        <a href="#loafers" class="nav-link">Loafers</a>
-
-        <a href="#new" class="nav-link">New Arrivals</a>
-
-        <a href="#about" class="nav-link">About</a>
-
-        <a href="#journal" class="nav-link">Journal</a>
-
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#home">Home</a>
+        <a href="#shop">Collection</a>
+        <a href="#chelsea">Chelsea</a>
+        <a href="#loafers">Loafers</a>
+        <a href="#new">New Arrivals</a>
+        <a href="#about">About</a>
+        <a href="#journal">Journal</a>
+        <a href="#contact">Contact</a>
 
     </div>
 
-    <div class="nav-actions">
 
-        <button class="nav-icon" id="searchBtn">
+    <div class="nav-tools">
+
+        <button class="icon-btn" id="searchButton" aria-label="Search">
             ⌕
         </button>
 
-        <button class="nav-icon cart-button" id="cartBtn">
+        <button class="icon-btn cart-btn" id="cartButton" aria-label="Bag">
             ♧
             <span class="cart-count" id="cartCount">0</span>
         </button>
 
-        <button class="nav-icon menu-btn" id="menuBtn">
+        <button class="icon-btn mobile-trigger" id="mobileButton">
             ☰
         </button>
 
@@ -1849,477 +1858,493 @@ footer{
 
 <div class="mobile-menu" id="mobileMenu">
 
-    <a href="#home" class="mobile-link">Home</a>
-    <a href="#shop" class="mobile-link">Collection</a>
-    <a href="#chelsea" class="mobile-link">Chelsea</a>
-    <a href="#loafers" class="mobile-link">Loafers</a>
-    <a href="#new" class="mobile-link">New Arrivals</a>
-    <a href="#about" class="mobile-link">About</a>
-    <a href="#journal" class="mobile-link">Journal</a>
-    <a href="#contact" class="mobile-link">Contact</a>
+    <a href="#home">Home</a>
+    <a href="#shop">Collection</a>
+    <a href="#chelsea">Chelsea Boots</a>
+    <a href="#loafers">Loafers</a>
+    <a href="#new">New Arrivals</a>
+    <a href="#about">About</a>
+    <a href="#journal">Journal</a>
+    <a href="#contact">Contact</a>
 
 </div>
+
+
+<!-- =====================================================
+     PAGES
+===================================================== -->
+
+<main>
 
 
 <!-- =====================================================
      HOME
 ===================================================== -->
 
-<main>
-
 <section class="page active" id="page-home">
 
-<section class="hero">
+    <section class="hero">
 
-    <div class="hero-grid"></div>
+        <div class="hero-grid"></div>
 
-    <div class="hero-content">
+        <div class="hero-content">
 
-        <div class="hero-small">
-            EST. — PREMIUM FOOTWEAR
+            <div class="hero-kicker">
+                EST. — PREMIUM FOOTWEAR
+            </div>
+
+            <h1>
+                WALK<br>
+                <em>IN</em><br>
+                CONFIDENCE.
+            </h1>
+
+            <p class="hero-text">
+                Refined footwear designed for people who believe
+                every step should make a statement.
+                Discover the WALKINCHELSEA collection.
+            </p>
+
+            <div class="hero-actions">
+
+                <a href="#shop" class="btn btn-gold">
+                    Explore Collection
+                </a>
+
+                <a href="#about" class="btn">
+                    Our Story
+                </a>
+
+            </div>
+
         </div>
 
-        <h1>
-            WALK<br>
-            <em>IN</em><br>
-            CONFIDENCE.
-        </h1>
 
-        <p class="hero-desc">
-            Refined footwear designed for people who believe
-            every step should make a statement.
-            Discover the WALKINCHELSEA collection.
-        </p>
+        <div class="hero-object">
 
-        <div class="hero-buttons">
+            <div class="orbit"></div>
+            <div class="orbit"></div>
+            <div class="orbit"></div>
+            <div class="orbit"></div>
 
-            <a href="#shop" class="btn btn-gold">
-                Explore Collection
-            </a>
+            <div class="hero-core">
+                <span>WC</span>
+            </div>
 
-            <a href="#about" class="btn">
-                Our Story
-            </a>
+        </div>
+
+
+        <div class="hero-card">
+
+            <small>THE COLLECTION</small>
+
+            <strong>
+                39 Selected Styles
+            </strong>
+
+        </div>
+
+
+        <div class="hero-bottom">
+
+            <span>WALKINCHELSEA</span>
+            <span>HYDERABAD — INDIA</span>
+            <span>SCROLL ↓</span>
+
+        </div>
+
+    </section>
+
+
+    <div class="marquee">
+
+        <div class="marquee-track">
+
+            <span>WALK IN CONFIDENCE</span>
+            <b>✦</b>
+
+            <span>PREMIUM FOOTWEAR</span>
+            <b>✦</b>
+
+            <span>CRAFTED FOR PRESENCE</span>
+            <b>✦</b>
+
+            <span>WALKINCHELSEA</span>
+            <b>✦</b>
+
+            <span>WALK IN CONFIDENCE</span>
+            <b>✦</b>
+
+            <span>PREMIUM FOOTWEAR</span>
+            <b>✦</b>
+
+            <span>CRAFTED FOR PRESENCE</span>
+            <b>✦</b>
+
+            <span>WALKINCHELSEA</span>
 
         </div>
 
     </div>
 
-    <div class="hero-product">
 
-        <div class="hero-orbit"></div>
-        <div class="hero-orbit"></div>
-        <div class="hero-orbit"></div>
+    <section class="section">
 
-        <div class="hero-shoe"></div>
+        <div class="container">
+
+            <div class="section-head reveal">
+
+                <div>
+
+                    <div class="eyebrow">
+                        Explore The World
+                    </div>
+
+                    <h2 class="title">
+                        Find Your<br>
+                        <em>Signature.</em>
+                    </h2>
+
+                </div>
+
+                <p class="description">
+                    From timeless Chelsea boots to sophisticated
+                    loafers, every WALKINCHELSEA piece is selected
+                    to bring character, confidence and distinction
+                    to your wardrobe.
+                </p>
+
+            </div>
+
+
+            <div class="category-grid">
+
+                <div class="category">
+
+                    <div class="category-bg"></div>
+
+                    <div class="category-content">
+
+                        <div class="eyebrow">
+                            01 — Collection
+                        </div>
+
+                        <h3>All Footwear</h3>
+
+                        <p>
+                            39 selected premium styles.
+                        </p>
+
+                        <a href="#shop">
+                            Explore →
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="category">
+
+                    <div class="category-bg"></div>
+
+                    <div class="category-content">
+
+                        <div class="eyebrow">
+                            02
+                        </div>
+
+                        <h3>Chelsea</h3>
+
+                        <p>
+                            Sharp. Timeless. Powerful.
+                        </p>
+
+                        <a href="#chelsea">
+                            Discover →
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="category">
+
+                    <div class="category-bg"></div>
+
+                    <div class="category-content">
+
+                        <div class="eyebrow">
+                            03
+                        </div>
+
+                        <h3>Loafers</h3>
+
+                        <p>
+                            Quiet luxury in every step.
+                        </p>
+
+                        <a href="#loafers">
+                            Discover →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="container">
+
+        <div class="feature-strip">
+
+            <div class="feature">
+                <div class="feature-no">01</div>
+                <h3>Premium Selection</h3>
+                <p>
+                    Curated footwear styles for modern wardrobes.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-no">02</div>
+                <h3>Indian Pricing</h3>
+                <p>
+                    Premium style with straightforward pricing.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-no">03</div>
+                <h3>Easy Enquiry</h3>
+                <p>
+                    Connect directly through WhatsApp.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-no">04</div>
+                <h3>Walk With Confidence</h3>
+                <p>
+                    Your style begins from the ground up.
+                </p>
+            </div>
+
+        </div>
 
     </div>
 
-    <div class="floating-card">
 
-        <small>THE COLLECTION</small>
+    <section class="section">
 
-        <strong>
-            39 Selected Styles
-        </strong>
+        <div class="container">
 
-    </div>
+            <div class="editorial">
 
-    <div class="hero-meta">
+                <div class="editorial-art">
 
-        <span>WALKINCHELSEA</span>
+                    <div class="editorial-mark">
+                        WC.
+                    </div>
 
-        <span>HYDERABAD — INDIA</span>
-
-        <span>SCROLL TO DISCOVER ↓</span>
-
-    </div>
-
-</section>
+                </div>
 
 
-<div class="marquee">
+                <div class="editorial-copy">
 
-    <div class="marquee-track">
+                    <div class="eyebrow">
+                        The WALKINCHELSEA Philosophy
+                    </div>
 
-        <span>WALK IN CONFIDENCE</span>
-        <b>✦</b>
+                    <h2>
+                        Details<br>
+                        create<br>
+                        <em>presence.</em>
+                    </h2>
 
-        <span>CRAFTED FOR PRESENCE</span>
-        <b>✦</b>
+                    <div class="gold-line"></div>
 
-        <span>PREMIUM FOOTWEAR</span>
-        <b>✦</b>
+                    <p>
+                        Great footwear is not simply something you wear.
+                        It changes the way you enter a room, the way you
+                        move and the way you carry yourself.
+                    </p>
 
-        <span>WALKINCHELSEA</span>
-        <b>✦</b>
+                    <a href="#about" class="btn">
+                        Discover Our Story
+                    </a>
 
-        <span>WALK IN CONFIDENCE</span>
-        <b>✦</b>
+                </div>
 
-        <span>CRAFTED FOR PRESENCE</span>
-        <b>✦</b>
+            </div>
 
-        <span>PREMIUM FOOTWEAR</span>
-        <b>✦</b>
+        </div>
 
-        <span>WALKINCHELSEA</span>
-
-    </div>
-
-</div>
+    </section>
 
 
-<section class="section">
+    <section class="newsletter">
 
-<div class="container">
-
-    <div class="section-heading reveal">
-
-        <div>
+        <div class="container">
 
             <div class="eyebrow">
-                Explore The World
-            </div>
-
-            <h2 class="heading">
-                Find Your<br>
-                <span>Signature.</span>
-            </h2>
-
-        </div>
-
-        <p class="subheading">
-            From timeless Chelsea boots to sophisticated loafers,
-            every WALKINCHELSEA piece is selected to bring
-            character, confidence and distinction to your wardrobe.
-        </p>
-
-    </div>
-
-
-    <div class="category-grid">
-
-        <div class="category-card">
-
-            <div class="category-card-bg"></div>
-
-            <div class="category-card-content">
-
-                <div class="eyebrow">01 — Collection</div>
-
-                <h3>All Footwear</h3>
-
-                <p>39 selected premium styles.</p>
-
-                <a href="#shop">Explore →</a>
-
-            </div>
-
-        </div>
-
-
-        <div class="category-card small">
-
-            <div class="category-card-bg"></div>
-
-            <div class="category-card-content">
-
-                <div class="eyebrow">02</div>
-
-                <h3>Chelsea</h3>
-
-                <p>Sharp. Timeless. Powerful.</p>
-
-                <a href="#chelsea">Discover →</a>
-
-            </div>
-
-        </div>
-
-
-        <div class="category-card small">
-
-            <div class="category-card-bg"></div>
-
-            <div class="category-card-content">
-
-                <div class="eyebrow">03</div>
-
-                <h3>Loafers</h3>
-
-                <p>Quiet luxury in every step.</p>
-
-                <a href="#loafers">Discover →</a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<div class="container">
-
-<div class="features">
-
-    <div class="feature">
-
-        <div class="feature-number">01</div>
-
-        <h4>Premium Selection</h4>
-
-        <p>
-            Curated footwear styles for modern wardrobes.
-        </p>
-
-    </div>
-
-    <div class="feature">
-
-        <div class="feature-number">02</div>
-
-        <h4>Indian Pricing</h4>
-
-        <p>
-            Premium style with straightforward pricing.
-        </p>
-
-    </div>
-
-    <div class="feature">
-
-        <div class="feature-number">03</div>
-
-        <h4>Easy Enquiry</h4>
-
-        <p>
-            Connect directly through WhatsApp.
-        </p>
-
-    </div>
-
-    <div class="feature">
-
-        <div class="feature-number">04</div>
-
-        <h4>Walk With Confidence</h4>
-
-        <p>
-            Your style begins from the ground up.
-        </p>
-
-    </div>
-
-</div>
-
-</div>
-
-
-<section class="section">
-
-<div class="container">
-
-    <div class="editorial">
-
-        <div class="editorial-visual">
-
-            <div class="editorial-circle"></div>
-
-            <div class="editorial-visual-text">
-                WC.
-            </div>
-
-        </div>
-
-        <div class="editorial-content">
-
-            <div class="eyebrow">
-                The WALKINCHELSEA Philosophy
+                WALKINCHELSEA EDIT
             </div>
 
             <h2>
-                Details<br>
-                create<br>
-                <span>presence.</span>
+                Enter the world of WALKINCHELSEA.
             </h2>
 
-            <div class="gold-line"></div>
-
             <p>
-                Great footwear is not simply something you wear.
-                It changes the way you enter a room, the way you
-                move and the way you carry yourself.
+                New collections, selected styles and footwear inspiration.
             </p>
 
-            <a href="#about" class="btn">
-                Discover Our Story
-            </a>
+            <form class="newsletter-form"
+                  onsubmit="event.preventDefault(); alert('Thank you for joining WALKINCHELSEA.');">
+
+                <input
+                    type="email"
+                    placeholder="Your email address"
+                    required
+                >
+
+                <button class="btn btn-gold">
+                    Join
+                </button>
+
+            </form>
 
         </div>
 
-    </div>
-
-</div>
-
-</section>
-
-
-<section class="newsletter">
-
-<div class="container">
-
-    <div class="eyebrow">
-        WALKINCHELSEA EDIT
-    </div>
-
-    <h2>
-        Enter the world of WALKINCHELSEA.
-    </h2>
-
-    <p>
-        New collections, selected styles and footwear inspiration.
-    </p>
-
-    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for joining WALKINCHELSEA.');">
-
-        <input
-            type="email"
-            placeholder="Your email address"
-            required
-        >
-
-        <button class="btn btn-gold">
-            Join
-        </button>
-
-    </form>
-
-</div>
-
-</section>
+    </section>
 
 </section>
 
 
 <!-- =====================================================
-     SHOP
+     COLLECTION
 ===================================================== -->
 
 <section class="page" id="page-shop">
 
-<div class="page-hero">
+    <div class="page-hero">
 
-<div class="container">
-
-    <div class="eyebrow">
-        WALKINCHELSEA — COLLECTION
-    </div>
-
-    <h1>
-        The<br>
-        <span>Collection.</span>
-    </h1>
-
-    <div class="page-hero-number">
-        39
-    </div>
-
-</div>
-
-</div>
-
-
-<section class="section">
-
-<div class="container">
-
-    <div class="section-heading">
-
-        <div>
+        <div class="container">
 
             <div class="eyebrow">
-                Selected Styles
+                WALKINCHELSEA — COLLECTION
             </div>
 
-            <h2 class="heading">
-                Your next<br>
-                <span>statement.</span>
-            </h2>
+            <h1 class="page-title">
+                The<br>
+                <em>Collection.</em>
+            </h1>
 
-        </div>
-
-        <p class="subheading">
-            Explore all 39 selected WALKINCHELSEA styles.
-        </p>
-
-    </div>
-
-
-    <div class="product-toolbar">
-
-        <div class="filters">
-
-            <button class="filter-btn active" data-filter="all">
-                All
-            </button>
-
-            <button class="filter-btn" data-filter="chelsea">
-                Chelsea Boots
-            </button>
-
-            <button class="filter-btn" data-filter="loafer">
-                Loafers
-            </button>
-
-            <button class="filter-btn" data-filter="mule">
-                Mules
-            </button>
-
-        </div>
-
-
-        <div class="search-sort">
-
-            <input
-                type="text"
-                id="productSearch"
-                class="search-box"
-                placeholder="Search products..."
-            >
-
-            <select id="productSort" class="sort-box">
-
-                <option value="featured">Featured</option>
-
-                <option value="low">
-                    Price — Low to High
-                </option>
-
-                <option value="high">
-                    Price — High to Low
-                </option>
-
-                <option value="az">
-                    Name — A to Z
-                </option>
-
-            </select>
+            <div class="page-hero-number">
+                39
+            </div>
 
         </div>
 
     </div>
 
 
-    <div class="product-grid" id="productGrid"></div>
+    <section class="section">
 
-</div>
+        <div class="container">
 
-</section>
+            <div class="section-head">
+
+                <div>
+
+                    <div class="eyebrow">
+                        Selected Styles
+                    </div>
+
+                    <h2 class="title">
+                        Your next<br>
+                        <em>statement.</em>
+                    </h2>
+
+                </div>
+
+                <p class="description">
+                    Explore all 39 selected WALKINCHELSEA styles.
+                    Every photograph follows the exact supplied
+                    product sequence.
+                </p>
+
+            </div>
+
+
+            <div class="toolbar">
+
+                <div class="filters">
+
+                    <button class="filter active" data-filter="all">
+                        All
+                    </button>
+
+                    <button class="filter" data-filter="chelsea">
+                        Chelsea Boots
+                    </button>
+
+                    <button class="filter" data-filter="loafer">
+                        Loafers
+                    </button>
+
+                    <button class="filter" data-filter="mule">
+                        Mules
+                    </button>
+
+                </div>
+
+
+                <div class="search-tools">
+
+                    <input
+                        id="searchInput"
+                        class="search"
+                        type="search"
+                        placeholder="Search products..."
+                    >
+
+                    <select id="sortSelect" class="sort">
+
+                        <option value="featured">
+                            Featured
+                        </option>
+
+                        <option value="low">
+                            Price — Low to High
+                        </option>
+
+                        <option value="high">
+                            Price — High to Low
+                        </option>
+
+                        <option value="az">
+                            Name — A to Z
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="product-grid" id="collectionGrid"></div>
+
+        </div>
+
+    </section>
 
 </section>
 
@@ -2330,54 +2355,56 @@ footer{
 
 <section class="page" id="page-chelsea">
 
-<div class="page-hero">
+    <div class="page-hero">
 
-<div class="container">
-
-    <div class="eyebrow">
-        Collection 01
-    </div>
-
-    <h1>
-        Chelsea<br>
-        <span>Boots.</span>
-    </h1>
-
-</div>
-
-</div>
-
-<section class="section">
-
-<div class="container">
-
-    <div class="section-heading">
-
-        <div>
+        <div class="container">
 
             <div class="eyebrow">
-                The Chelsea Edit
+                COLLECTION 01
             </div>
 
-            <h2 class="heading">
-                Built for<br>
-                <span>presence.</span>
-            </h2>
+            <h1 class="page-title">
+                Chelsea<br>
+                <em>Boots.</em>
+            </h1>
 
         </div>
 
-        <p class="subheading">
-            Clean silhouettes, confident profiles and versatile
-            colours designed for modern occasions.
-        </p>
-
     </div>
 
-    <div class="product-grid" id="chelseaGrid"></div>
 
-</div>
+    <section class="section">
 
-</section>
+        <div class="container">
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="eyebrow">
+                        The Chelsea Edit
+                    </div>
+
+                    <h2 class="title">
+                        Built for<br>
+                        <em>presence.</em>
+                    </h2>
+
+                </div>
+
+                <p class="description">
+                    Clean silhouettes, confident profiles and
+                    distinctive colours designed for modern occasions.
+                </p>
+
+            </div>
+
+
+            <div class="product-grid" id="chelseaGrid"></div>
+
+        </div>
+
+    </section>
 
 </section>
 
@@ -2388,54 +2415,56 @@ footer{
 
 <section class="page" id="page-loafers">
 
-<div class="page-hero">
+    <div class="page-hero">
 
-<div class="container">
-
-    <div class="eyebrow">
-        Collection 02
-    </div>
-
-    <h1>
-        The<br>
-        <span>Loafers.</span>
-    </h1>
-
-</div>
-
-</div>
-
-<section class="section">
-
-<div class="container">
-
-    <div class="section-heading">
-
-        <div>
+        <div class="container">
 
             <div class="eyebrow">
-                The Loafer Edit
+                COLLECTION 02
             </div>
 
-            <h2 class="heading">
-                Quiet<br>
-                <span>luxury.</span>
-            </h2>
+            <h1 class="page-title">
+                The<br>
+                <em>Loafers.</em>
+            </h1>
 
         </div>
 
-        <p class="subheading">
-            Sophisticated silhouettes designed for effortless
-            dressing from day to evening.
-        </p>
-
     </div>
 
-    <div class="product-grid" id="loaferGrid"></div>
 
-</div>
+    <section class="section">
 
-</section>
+        <div class="container">
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="eyebrow">
+                        The Loafer Edit
+                    </div>
+
+                    <h2 class="title">
+                        Quiet<br>
+                        <em>luxury.</em>
+                    </h2>
+
+                </div>
+
+                <p class="description">
+                    Sophisticated silhouettes designed for effortless
+                    dressing from day to evening.
+                </p>
+
+            </div>
+
+
+            <div class="product-grid" id="loafersGrid"></div>
+
+        </div>
+
+    </section>
 
 </section>
 
@@ -2446,54 +2475,56 @@ footer{
 
 <section class="page" id="page-new">
 
-<div class="page-hero">
+    <div class="page-hero">
 
-<div class="container">
-
-    <div class="eyebrow">
-        Latest Selection
-    </div>
-
-    <h1>
-        New<br>
-        <span>Arrivals.</span>
-    </h1>
-
-</div>
-
-</div>
-
-<section class="section">
-
-<div class="container">
-
-    <div class="section-heading">
-
-        <div>
+        <div class="container">
 
             <div class="eyebrow">
-                Fresh From The Edit
+                LATEST SELECTION
             </div>
 
-            <h2 class="heading">
-                New season<br>
-                <span>energy.</span>
-            </h2>
+            <h1 class="page-title">
+                New<br>
+                <em>Arrivals.</em>
+            </h1>
 
         </div>
 
-        <p class="subheading">
-            Discover the latest styles added to our selected
-            WALKINCHELSEA collection.
-        </p>
-
     </div>
 
-    <div class="product-grid" id="newGrid"></div>
 
-</div>
+    <section class="section">
 
-</section>
+        <div class="container">
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="eyebrow">
+                        Fresh From The Edit
+                    </div>
+
+                    <h2 class="title">
+                        New season<br>
+                        <em>energy.</em>
+                    </h2>
+
+                </div>
+
+                <p class="description">
+                    Discover the latest styles in the WALKINCHELSEA
+                    selected collection.
+                </p>
+
+            </div>
+
+
+            <div class="product-grid" id="newGrid"></div>
+
+        </div>
+
+    </section>
 
 </section>
 
@@ -2504,104 +2535,103 @@ footer{
 
 <section class="page" id="page-about">
 
-<div class="page-hero">
+    <div class="page-hero">
 
-<div class="container">
+        <div class="container">
 
-    <div class="eyebrow">
-        About WALKINCHELSEA
-    </div>
+            <div class="eyebrow">
+                ABOUT WALKINCHELSEA
+            </div>
 
-    <h1>
-        Made to<br>
-        <span>be noticed.</span>
-    </h1>
+            <h1 class="page-title">
+                Made to<br>
+                <em>be noticed.</em>
+            </h1>
 
-</div>
-
-</div>
-
-<section class="section">
-
-<div class="container">
-
-<div class="editorial">
-
-    <div class="editorial-visual">
-
-        <div class="editorial-circle"></div>
-
-        <div class="editorial-visual-text">
-            WALK<br>
-            WITH<br>
-            STYLE.
         </div>
 
     </div>
 
 
-    <div class="editorial-content">
+    <section class="section">
 
-        <div class="eyebrow">
-            Our Philosophy
+        <div class="container">
+
+            <div class="editorial">
+
+                <div class="editorial-art">
+
+                    <div class="editorial-mark">
+                        WALK<br>
+                        WITH<br>
+                        STYLE.
+                    </div>
+
+                </div>
+
+
+                <div class="editorial-copy">
+
+                    <div class="eyebrow">
+                        Our Philosophy
+                    </div>
+
+                    <h2>
+                        Footwear<br>
+                        with<br>
+                        <em>character.</em>
+                    </h2>
+
+                    <div class="gold-line"></div>
+
+                    <p>
+                        WALKINCHELSEA is built around a simple idea:
+                        footwear should complement the person wearing it,
+                        never overpower them.
+                    </p>
+
+                    <p>
+                        Our collection focuses on timeless silhouettes,
+                        refined colourways and styles that work across
+                        different occasions.
+                    </p>
+
+                    <a href="#shop" class="btn btn-gold">
+                        Explore Collection
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat">
+                    <strong>39</strong>
+                    <span>Selected Styles</span>
+                </div>
+
+                <div class="stat">
+                    <strong>03</strong>
+                    <span>Core Collections</span>
+                </div>
+
+                <div class="stat">
+                    <strong>01</strong>
+                    <span>Signature</span>
+                </div>
+
+                <div class="stat">
+                    <strong>∞</strong>
+                    <span>Ways To Walk</span>
+                </div>
+
+            </div>
+
         </div>
 
-        <h2>
-            Footwear<br>
-            with<br>
-            <span>character.</span>
-        </h2>
-
-        <div class="gold-line"></div>
-
-        <p>
-            WALKINCHELSEA is built around a simple idea:
-            footwear should complement the person wearing it,
-            never overpower them.
-        </p>
-
-        <p>
-            Our collection focuses on timeless silhouettes,
-            refined colourways and styles that work across
-            different occasions.
-        </p>
-
-        <a href="#shop" class="btn btn-gold">
-            Explore Collection
-        </a>
-
-    </div>
-
-</div>
-
-
-<div class="stats">
-
-    <div class="stat">
-        <strong>39</strong>
-        <p>Selected Styles</p>
-    </div>
-
-    <div class="stat">
-        <strong>03</strong>
-        <p>Core Collections</p>
-    </div>
-
-    <div class="stat">
-        <strong>01</strong>
-        <p>Signature</p>
-    </div>
-
-    <div class="stat">
-        <strong>∞</strong>
-        <p>Ways To Walk</p>
-    </div>
-
-</div>
-
-</div>
-
-</section>
+    </section>
 
 </section>
 
@@ -2612,124 +2642,131 @@ footer{
 
 <section class="page" id="page-journal">
 
-<div class="page-hero">
+    <div class="page-hero">
 
-<div class="container">
+        <div class="container">
 
-    <div class="eyebrow">
-        WALKINCHELSEA Journal
-    </div>
+            <div class="eyebrow">
+                WALKINCHELSEA JOURNAL
+            </div>
 
-    <h1>
-        Style<br>
-        <span>Notes.</span>
-    </h1>
+            <h1 class="page-title">
+                Style<br>
+                <em>Notes.</em>
+            </h1>
 
-</div>
-
-</div>
-
-<section class="section">
-
-<div class="container">
-
-<div class="section-heading">
-
-    <div>
-
-        <div class="eyebrow">
-            Stories & Inspiration
         </div>
-
-        <h2 class="heading">
-            Walk<br>
-            <span>different.</span>
-        </h2>
 
     </div>
 
-    <p class="subheading">
-        Inspiration for choosing, styling and wearing premium
-        footwear with confidence.
-    </p>
 
-</div>
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="eyebrow">
+                        Stories & Inspiration
+                    </div>
+
+                    <h2 class="title">
+                        Walk<br>
+                        <em>different.</em>
+                    </h2>
+
+                </div>
+
+                <p class="description">
+                    Inspiration for choosing, styling and wearing
+                    premium footwear with confidence.
+                </p>
+
+            </div>
 
 
-<div class="journal-grid">
+            <div class="journal-grid">
 
-    <article class="journal-card">
+                <article class="journal-card">
 
-        <div class="journal-image"></div>
+                    <div class="journal-art">
+                        <span>01</span>
+                    </div>
 
-        <div class="journal-content">
+                    <div class="journal-copy">
 
-            <small>Style Guide</small>
+                        <small>Style Guide</small>
 
-            <h3>
-                How to style Chelsea boots.
-            </h3>
+                        <h3>
+                            How to style Chelsea boots.
+                        </h3>
 
-            <p>
-                From casual evenings to sharper occasions,
-                Chelsea boots can become the foundation of
-                a modern wardrobe.
-            </p>
+                        <p>
+                            From casual evenings to sharper occasions,
+                            Chelsea boots can become the foundation of
+                            a modern wardrobe.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="journal-card">
+
+                    <div class="journal-art">
+                        <span>02</span>
+                    </div>
+
+                    <div class="journal-copy">
+
+                        <small>Footwear</small>
+
+                        <h3>
+                            The timeless loafer.
+                        </h3>
+
+                        <p>
+                            Discover why loafers continue to remain
+                            one of the most versatile footwear styles.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="journal-card">
+
+                    <div class="journal-art">
+                        <span>03</span>
+                    </div>
+
+                    <div class="journal-copy">
+
+                        <small>WALKINCHELSEA</small>
+
+                        <h3>
+                            Why your shoes matter.
+                        </h3>
+
+                        <p>
+                            Personal style often begins with the smallest
+                            details — and footwear is one of the first
+                            details people notice.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
 
         </div>
 
-    </article>
-
-
-    <article class="journal-card">
-
-        <div class="journal-image"></div>
-
-        <div class="journal-content">
-
-            <small>Footwear</small>
-
-            <h3>
-                The timeless loafer.
-            </h3>
-
-            <p>
-                Discover why loafers continue to remain
-                one of the most versatile footwear styles.
-            </p>
-
-        </div>
-
-    </article>
-
-
-    <article class="journal-card">
-
-        <div class="journal-image"></div>
-
-        <div class="journal-content">
-
-            <small>WALKINCHELSEA</small>
-
-            <h3>
-                Why your shoes matter.
-            </h3>
-
-            <p>
-                Personal style often begins with the smallest
-                details — and footwear is one of the first
-                details people notice.
-            </p>
-
-        </div>
-
-    </article>
-
-</div>
-
-</div>
-
-</section>
+    </section>
 
 </section>
 
@@ -2740,116 +2777,118 @@ footer{
 
 <section class="page" id="page-contact">
 
-<div class="page-hero">
+    <div class="page-hero">
 
-<div class="container">
+        <div class="container">
 
-    <div class="eyebrow">
-        Get In Touch
-    </div>
-
-    <h1>
-        Let's<br>
-        <span>connect.</span>
-    </h1>
-
-</div>
-
-</div>
-
-<section class="section">
-
-<div class="container">
-
-<div class="contact-grid">
-
-    <div>
-
-        <div class="eyebrow">
-            WALKINCHELSEA
-        </div>
-
-        <h2 class="contact-title">
-            Your next<br>
-            pair is<br>
-            <span>waiting.</span>
-        </h2>
-
-        <div class="contact-info">
-
-            <div class="contact-row">
-
-                <small>WhatsApp</small>
-
-                <a
-                    href="https://wa.me/918522891829"
-                    target="_blank"
-                >
-                    +91 85228 91829
-                </a>
-
+            <div class="eyebrow">
+                GET IN TOUCH
             </div>
 
-
-            <div class="contact-row">
-
-                <small>Location</small>
-
-                <p>
-                    8-2-272/4, Road No. 2,
-                    Shawkatnagar, Andhra Pradesh Real Estate,
-                    Green Valley, Banjara Hills,
-                    Hyderabad, Telangana 500034, India
-                </p>
-
-            </div>
-
-
-            <div class="contact-row">
-
-                <small>Business Hours</small>
-
-                <p>
-                    Open 24 Hours
-                </p>
-
-            </div>
+            <h1 class="page-title">
+                Let's<br>
+                <em>connect.</em>
+            </h1>
 
         </div>
 
     </div>
 
 
-    <div class="contact-card">
+    <section class="section">
 
-        <div class="eyebrow">
-            Direct Enquiry
+        <div class="container">
+
+            <div class="contact-grid">
+
+                <div>
+
+                    <div class="eyebrow">
+                        WALKINCHELSEA
+                    </div>
+
+                    <h2 class="contact-title">
+                        Your next<br>
+                        pair is<br>
+                        <em>waiting.</em>
+                    </h2>
+
+
+                    <div class="contact-list">
+
+                        <div class="contact-item">
+
+                            <small>WhatsApp</small>
+
+                            <a
+                                href="https://wa.me/918522891829"
+                                target="_blank"
+                            >
+                                +91 85228 91829
+                            </a>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <small>Location</small>
+
+                            <p>
+                                8-2-272/4, Road No. 2,
+                                Shawkatnagar, Andhra Pradesh Real Estate,
+                                Green Valley, Banjara Hills,
+                                Hyderabad, Telangana 500034, India
+                            </p>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <small>Business Hours</small>
+
+                            <p>
+                                Open 24 Hours
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-box">
+
+                    <div class="eyebrow">
+                        DIRECT ENQUIRY
+                    </div>
+
+                    <h2>
+                        Talk to WALKINCHELSEA.
+                    </h2>
+
+                    <p>
+                        Have a question about a product, price or
+                        availability? Connect directly through WhatsApp.
+                    </p>
+
+                    <a
+                        href="https://wa.me/918522891829?text=Hello%20WALKINCHELSEA%2C%20I%20would%20like%20to%20know%20more%20about%20your%20footwear."
+                        target="_blank"
+                        class="btn btn-gold"
+                    >
+                        WhatsApp Us →
+                    </a>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <h3>
-            Talk to WALKINCHELSEA.
-        </h3>
-
-        <p>
-            Have a question about a product, price or
-            availability? Connect directly through WhatsApp.
-        </p>
-
-        <a
-            href="https://wa.me/918522891829?text=Hello%20WALKINCHELSEA%2C%20I%20would%20like%20to%20know%20more%20about%20your%20footwear."
-            target="_blank"
-            class="btn btn-gold"
-        >
-            WhatsApp Us →
-        </a>
-
-    </div>
-
-</div>
-
-</div>
-
-</section>
+    </section>
 
 </section>
 
@@ -2860,85 +2899,87 @@ footer{
      FOOTER
 ===================================================== -->
 
-<footer>
+<footer class="footer">
 
-<div class="container">
+    <div class="container">
 
-<div class="footer-grid">
+        <div class="footer-grid">
 
-    <div class="footer-brand">
+            <div class="footer-brand">
 
-        <h2>WALKINCHELSEA</h2>
+                <h2>
+                    WALKINCHELSEA
+                </h2>
 
-        <p>
-            Premium footwear for people who believe
-            confidence begins with every step.
-        </p>
+                <p>
+                    Premium footwear for people who believe
+                    confidence begins with every step.
+                </p>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Explore</h4>
+
+                <a href="#home">Home</a>
+                <a href="#shop">Collection</a>
+                <a href="#chelsea">Chelsea</a>
+                <a href="#loafers">Loafers</a>
+                <a href="#new">New Arrivals</a>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Company</h4>
+
+                <a href="#about">About</a>
+                <a href="#journal">Journal</a>
+                <a href="#contact">Contact</a>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Connect</h4>
+
+                <a
+                    href="https://wa.me/918522891829"
+                    target="_blank"
+                >
+                    WhatsApp
+                </a>
+
+                <a href="#contact">
+                    Hyderabad, India
+                </a>
+
+                <a href="#shop">
+                    Shop Collection
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 WALKINCHELSEA. ALL RIGHTS RESERVED.
+            </span>
+
+            <span>
+                WALK IN CONFIDENCE.
+            </span>
+
+        </div>
 
     </div>
-
-
-    <div class="footer-col">
-
-        <h4>Explore</h4>
-
-        <a href="#home">Home</a>
-        <a href="#shop">Collection</a>
-        <a href="#chelsea">Chelsea</a>
-        <a href="#loafers">Loafers</a>
-        <a href="#new">New Arrivals</a>
-
-    </div>
-
-
-    <div class="footer-col">
-
-        <h4>Company</h4>
-
-        <a href="#about">About</a>
-        <a href="#journal">Journal</a>
-        <a href="#contact">Contact</a>
-
-    </div>
-
-
-    <div class="footer-col">
-
-        <h4>Connect</h4>
-
-        <a
-            href="https://wa.me/918522891829"
-            target="_blank"
-        >
-            WhatsApp
-        </a>
-
-        <a href="#contact">
-            Hyderabad, India
-        </a>
-
-        <a href="#shop">
-            Shop Collection
-        </a>
-
-    </div>
-
-</div>
-
-
-<div class="footer-bottom">
-
-    <span>
-        © 2026 WALKINCHELSEA. ALL RIGHTS RESERVED.
-    </span>
-
-    <span>
-        WALK IN CONFIDENCE.
-    </span>
-
-</div>
-
-</div>
 
 </footer>
 
@@ -2949,43 +2990,45 @@ footer{
 
 <div class="cart-overlay" id="cartOverlay">
 
-<div class="cart-drawer">
+    <div class="cart">
 
-    <div class="cart-head">
+        <div class="cart-header">
 
-        <h3>Your Bag</h3>
+            <h2>Your Bag</h2>
 
-        <button class="close-btn" id="closeCart">
-            ×
-        </button>
-
-    </div>
-
-    <div class="cart-items" id="cartItems"></div>
-
-    <div class="cart-footer">
-
-        <div class="cart-total">
-
-            <span>Total</span>
-
-            <strong id="cartTotal">
-                ₹0
-            </strong>
+            <button class="close" id="closeCart">
+                ×
+            </button>
 
         </div>
 
-        <button
-            class="btn btn-gold"
-            style="width:100%"
-            id="whatsappOrder"
-        >
-            Order Through WhatsApp →
-        </button>
+
+        <div class="cart-items" id="cartItems"></div>
+
+
+        <div class="cart-footer">
+
+            <div class="total">
+
+                <span>Total</span>
+
+                <strong id="cartTotal">
+                    ₹0
+                </strong>
+
+            </div>
+
+            <button
+                class="btn btn-gold"
+                style="width:100%"
+                id="orderCart"
+            >
+                Send Enquiry On WhatsApp →
+            </button>
+
+        </div>
 
     </div>
-
-</div>
 
 </div>
 
@@ -2994,65 +3037,58 @@ footer{
      PRODUCT MODAL
 ===================================================== -->
 
-<div class="modal-overlay" id="productModal">
+<div class="modal-overlay" id="modalOverlay">
 
-<div class="modal">
+    <div class="modal">
 
-    <div class="modal-image">
+        <div class="modal-photo">
 
-        <img
-            id="modalImage"
-            src=""
-            alt=""
-        >
-
-    </div>
-
-
-    <div class="modal-info">
-
-        <button
-            class="modal-close"
-            id="closeModal"
-        >
-            ×
-        </button>
-
-        <div
-            class="modal-category"
-            id="modalCategory"
-        ></div>
-
-        <h2 id="modalName"></h2>
-
-        <div
-            class="modal-price"
-            id="modalPrice"
-        ></div>
-
-        <div class="gold-line"></div>
-
-        <p>
-            A refined WALKINCHELSEA selection designed
-            to bring confidence, character and effortless
-            style to every step.
-        </p>
-
-        <div class="modal-buttons">
-
-            <button
-                class="btn btn-gold"
-                id="modalAdd"
+            <img
+                id="modalImage"
+                src=""
+                alt=""
             >
-                Add To Bag
+
+        </div>
+
+
+        <div class="modal-content">
+
+            <button class="close" id="closeModal">
+                ×
             </button>
 
-            <button
-                class="btn"
-                id="modalWhatsApp"
-            >
-                WhatsApp
-            </button>
+            <div class="modal-cat" id="modalCategory"></div>
+
+            <h2 id="modalName"></h2>
+
+            <div class="modal-price" id="modalPrice"></div>
+
+            <div class="gold-line"></div>
+
+            <p>
+                A refined WALKINCHELSEA selection designed
+                to bring confidence, character and effortless
+                style to every step.
+            </p>
+
+            <div class="modal-actions">
+
+                <button
+                    class="btn btn-gold"
+                    id="modalAdd"
+                >
+                    Add To Bag
+                </button>
+
+                <button
+                    class="btn"
+                    id="modalWhatsApp"
+                >
+                    WhatsApp
+                </button>
+
+            </div>
 
         </div>
 
@@ -3060,350 +3096,354 @@ footer{
 
 </div>
 
-</div>
-
 
 <!-- =====================================================
-     FLOATING WHATSAPP
+     WHATSAPP
 ===================================================== -->
 
 <a
-    class="whatsapp-float"
+    class="whatsapp"
     href="https://wa.me/918522891829"
     target="_blank"
-    aria-label="WhatsApp"
+    aria-label="WhatsApp WALKINCHELSEA"
 >
-    <svg
-        width="26"
-        height="26"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-    >
-        <path d="M20.52 3.48A11.86 11.86 0 0012.08 0C5.52 0 .18 5.34.18 11.9c0 2.1.55 4.15 1.6 5.96L.1 24l6.28-1.65a11.9 11.9 0 005.7 1.45h.01c6.55 0 11.9-5.34 11.9-11.9a11.83 11.83 0 00-3.47-8.42zM12.09 21.8h-.01a9.88 9.88 0 01-5.04-1.38l-.36-.21-3.73.98 1-3.64-.23-.37a9.88 9.88 0 01-1.52-5.28C2.2 6.44 6.64 2 12.09 2a9.85 9.85 0 017 2.9 9.86 9.86 0 012.9 7c0 5.45-4.44 9.9-9.9 9.9zm5.43-7.41c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.77-1.64-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.21 5.08 4.5.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
-    </svg>
+
+<svg
+    width="27"
+    height="27"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+>
+
+<path d="M20.52 3.48A11.86 11.86 0 0012.08 0C5.52 0 .18 5.34.18 11.9c0 2.1.55 4.15 1.6 5.96L.1 24l6.28-1.65a11.9 11.9 0 005.7 1.45h.01c6.55 0 11.9-5.34 11.9-11.9a11.83 11.83 0 00-3.47-8.42zM12.09 21.8h-.01a9.88 9.88 0 01-5.04-1.38l-.36-.21-3.73.98 1-3.64-.23-.37a9.88 9.88 0 01-1.52-5.28C2.2 6.44 6.64 2 12.09 2a9.85 9.85 0 017 2.9 9.86 9.86 0 012.9 7c0 5.45-4.44 9.9-9.9 9.9zm5.43-7.41c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.77-1.64-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.21 5.08 4.5.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
+
+</svg>
+
 </a>
 
 
 <script>
 
 /* =========================================================
-   PRODUCT DATA
-   EXACT 01 → 39 IMAGE MAPPING
+   PRODUCT DATABASE
+   IMPORTANT:
+   IMAGES ARE IN THE ROOT OF THE GITHUB REPOSITORY.
+   DO NOT CHANGE TO assets/products/
 ========================================================= */
 
 const products = [
 
-{
- id:1,
- name:"Sandstone Mule",
- price:3000,
- image:"assets/products/01.jpg",
- category:"mule"
-},
+    {
+        id:1,
+        name:"Sandstone Mule",
+        price:3000,
+        image:"01.jpg",
+        category:"mule"
+    },
 
-{
- id:2,
- name:"Midnight Chelsea",
- price:3500,
- image:"assets/products/02.jpg",
- category:"chelsea"
-},
+    {
+        id:2,
+        name:"Midnight Chelsea",
+        price:3500,
+        image:"02.jpg",
+        category:"chelsea"
+    },
 
-{
- id:3,
- name:"Obsidian Chelsea",
- price:3200,
- image:"assets/products/03.jpg",
- category:"chelsea"
-},
+    {
+        id:3,
+        name:"Obsidian Chelsea",
+        price:3200,
+        image:"03.jpg",
+        category:"chelsea"
+    },
 
-{
- id:4,
- name:"Burgundy Classic Loafer",
- price:2400,
- image:"assets/products/04.jpg",
- category:"loafer"
-},
+    {
+        id:4,
+        name:"Burgundy Classic Loafer",
+        price:2400,
+        image:"04.jpg",
+        category:"loafer"
+    },
 
-{
- id:5,
- name:"Wine Penny Loafer",
- price:2400,
- image:"assets/products/05.jpg",
- category:"loafer"
-},
+    {
+        id:5,
+        name:"Wine Penny Loafer",
+        price:2400,
+        image:"05.jpg",
+        category:"loafer"
+    },
 
-{
- id:6,
- name:"Amber Leather Loafer",
- price:2400,
- image:"assets/products/06.jpg",
- category:"loafer"
-},
+    {
+        id:6,
+        name:"Amber Leather Loafer",
+        price:2400,
+        image:"06.jpg",
+        category:"loafer"
+    },
 
-{
- id:7,
- name:"Onyx Slip-On Loafer",
- price:2400,
- image:"assets/products/07.jpg",
- category:"loafer"
-},
+    {
+        id:7,
+        name:"Onyx Slip-On Loafer",
+        price:2400,
+        image:"07.jpg",
+        category:"loafer"
+    },
 
-{
- id:8,
- name:"Black Sculpted Loafer",
- price:2400,
- image:"assets/products/08.jpg",
- category:"loafer"
-},
+    {
+        id:8,
+        name:"Black Sculpted Loafer",
+        price:2400,
+        image:"08.jpg",
+        category:"loafer"
+    },
 
-{
- id:9,
- name:"Noir Textured Loafer",
- price:2400,
- image:"assets/products/09.jpg",
- category:"loafer"
-},
+    {
+        id:9,
+        name:"Noir Textured Loafer",
+        price:2400,
+        image:"09.jpg",
+        category:"loafer"
+    },
 
-{
- id:10,
- name:"Burgundy Luxe Loafer",
- price:2600,
- image:"assets/products/10.jpg",
- category:"loafer"
-},
+    {
+        id:10,
+        name:"Burgundy Luxe Loafer",
+        price:2600,
+        image:"10.jpg",
+        category:"loafer"
+    },
 
-{
- id:11,
- name:"Merlot Textured Loafer",
- price:2800,
- image:"assets/products/11.jpg",
- category:"loafer"
-},
+    {
+        id:11,
+        name:"Merlot Textured Loafer",
+        price:2800,
+        image:"11.jpg",
+        category:"loafer"
+    },
 
-{
- id:12,
- name:"Black Pebble Loafer",
- price:2800,
- image:"assets/products/12.jpg",
- category:"loafer"
-},
+    {
+        id:12,
+        name:"Black Pebble Loafer",
+        price:2800,
+        image:"12.jpg",
+        category:"loafer"
+    },
 
-{
- id:13,
- name:"Black Classic Loafer",
- price:2600,
- image:"assets/products/13.jpg",
- category:"loafer"
-},
+    {
+        id:13,
+        name:"Black Classic Loafer",
+        price:2600,
+        image:"13.jpg",
+        category:"loafer"
+    },
 
-{
- id:14,
- name:"Noir Textured Penny",
- price:2800,
- image:"assets/products/14.jpg",
- category:"loafer"
-},
+    {
+        id:14,
+        name:"Noir Textured Penny",
+        price:2800,
+        image:"14.jpg",
+        category:"loafer"
+    },
 
-{
- id:15,
- name:"Black Statement Loafer",
- price:2800,
- image:"assets/products/15.jpg",
- category:"loafer"
-},
+    {
+        id:15,
+        name:"Black Statement Loafer",
+        price:2800,
+        image:"15.jpg",
+        category:"loafer"
+    },
 
-{
- id:16,
- name:"Chestnut Chelsea",
- price:3200,
- image:"assets/products/16.jpg",
- category:"chelsea"
-},
+    {
+        id:16,
+        name:"Chestnut Chelsea",
+        price:3200,
+        image:"16.jpg",
+        category:"chelsea"
+    },
 
-{
- id:17,
- name:"Jet Black Chelsea",
- price:3200,
- image:"assets/products/17.jpg",
- category:"chelsea"
-},
+    {
+        id:17,
+        name:"Jet Black Chelsea",
+        price:3200,
+        image:"17.jpg",
+        category:"chelsea"
+    },
 
-{
- id:18,
- name:"Crimson Chelsea",
- price:2800,
- image:"assets/products/18.jpg",
- category:"chelsea"
-},
+    {
+        id:18,
+        name:"Crimson Chelsea",
+        price:2800,
+        image:"18.jpg",
+        category:"chelsea"
+    },
 
-{
- id:19,
- name:"Midnight Chelsea Boot",
- price:3200,
- image:"assets/products/19.jpg",
- category:"chelsea"
-},
+    {
+        id:19,
+        name:"Midnight Chelsea Boot",
+        price:3200,
+        image:"19.jpg",
+        category:"chelsea"
+    },
 
-{
- id:20,
- name:"Bordeaux Strap Boot",
- price:3800,
- image:"assets/products/20.jpg",
- category:"chelsea"
-},
+    {
+        id:20,
+        name:"Bordeaux Strap Boot",
+        price:3800,
+        image:"20.jpg",
+        category:"chelsea"
+    },
 
-{
- id:21,
- name:"Emerald Chelsea",
- price:3500,
- image:"assets/products/21.jpg",
- category:"chelsea"
-},
+    {
+        id:21,
+        name:"Emerald Chelsea",
+        price:3500,
+        image:"21.jpg",
+        category:"chelsea"
+    },
 
-{
- id:22,
- name:"Plum Chelsea",
- price:3200,
- image:"assets/products/22.jpg",
- category:"chelsea"
-},
+    {
+        id:22,
+        name:"Plum Chelsea",
+        price:3200,
+        image:"22.jpg",
+        category:"chelsea"
+    },
 
-{
- id:23,
- name:"Tangerine Chelsea",
- price:3800,
- image:"assets/products/23.jpg",
- category:"chelsea"
-},
+    {
+        id:23,
+        name:"Tangerine Chelsea",
+        price:3800,
+        image:"23.jpg",
+        category:"chelsea"
+    },
 
-{
- id:24,
- name:"Cognac Chelsea",
- price:3800,
- image:"assets/products/24.jpg",
- category:"chelsea"
-},
+    {
+        id:24,
+        name:"Cognac Chelsea",
+        price:3800,
+        image:"24.jpg",
+        category:"chelsea"
+    },
 
-{
- id:25,
- name:"Olive Chelsea",
- price:3200,
- image:"assets/products/25.jpg",
- category:"chelsea"
-},
+    {
+        id:25,
+        name:"Olive Chelsea",
+        price:3200,
+        image:"25.jpg",
+        category:"chelsea"
+    },
 
-{
- id:26,
- name:"Black Grain Chelsea",
- price:3500,
- image:"assets/products/26.jpg",
- category:"chelsea"
-},
+    {
+        id:26,
+        name:"Black Grain Chelsea",
+        price:3500,
+        image:"26.jpg",
+        category:"chelsea"
+    },
 
-{
- id:27,
- name:"Black Chelsea Classic",
- price:3200,
- image:"assets/products/27.jpg",
- category:"chelsea"
-},
+    {
+        id:27,
+        name:"Black Chelsea Classic",
+        price:3200,
+        image:"27.jpg",
+        category:"chelsea"
+    },
 
-{
- id:28,
- name:"Black Chelsea Refined",
- price:3200,
- image:"assets/products/28.jpg",
- category:"chelsea"
-},
+    {
+        id:28,
+        name:"Black Chelsea Refined",
+        price:3200,
+        image:"28.jpg",
+        category:"chelsea"
+    },
 
-{
- id:29,
- name:"Scarlet Chelsea",
- price:3200,
- image:"assets/products/29.jpg",
- category:"chelsea"
-},
+    {
+        id:29,
+        name:"Scarlet Chelsea",
+        price:3200,
+        image:"29.jpg",
+        category:"chelsea"
+    },
 
-{
- id:30,
- name:"Tan Chelsea",
- price:3200,
- image:"assets/products/30.jpg",
- category:"chelsea"
-},
+    {
+        id:30,
+        name:"Tan Chelsea",
+        price:3200,
+        image:"30.jpg",
+        category:"chelsea"
+    },
 
-{
- id:31,
- name:"Cognac Chelsea",
- price:3500,
- image:"assets/products/31.jpg",
- category:"chelsea"
-},
+    {
+        id:31,
+        name:"Cognac Chelsea",
+        price:3500,
+        image:"31.jpg",
+        category:"chelsea"
+    },
 
-{
- id:32,
- name:"Ivory Chelsea",
- price:3500,
- image:"assets/products/32.jpg",
- category:"chelsea"
-},
+    {
+        id:32,
+        name:"Ivory Chelsea",
+        price:3500,
+        image:"32.jpg",
+        category:"chelsea"
+    },
 
-{
- id:33,
- name:"Burgundy Chelsea",
- price:3200,
- image:"assets/products/33.jpg",
- category:"chelsea"
-},
+    {
+        id:33,
+        name:"Burgundy Chelsea",
+        price:3200,
+        image:"33.jpg",
+        category:"chelsea"
+    },
 
-{
- id:34,
- name:"Mocha Chelsea",
- price:3200,
- image:"assets/products/34.jpg",
- category:"chelsea"
-},
+    {
+        id:34,
+        name:"Mocha Chelsea",
+        price:3200,
+        image:"34.jpg",
+        category:"chelsea"
+    },
 
-{
- id:35,
- name:"Black Premium Chelsea",
- price:3800,
- image:"assets/products/35.jpg",
- category:"chelsea"
-},
+    {
+        id:35,
+        name:"Black Premium Chelsea",
+        price:3800,
+        image:"35.jpg",
+        category:"chelsea"
+    },
 
-{
- id:36,
- name:"Olive Premium Chelsea",
- price:3500,
- image:"assets/products/36.jpg",
- category:"chelsea"
-},
+    {
+        id:36,
+        name:"Olive Premium Chelsea",
+        price:3500,
+        image:"36.jpg",
+        category:"chelsea"
+    },
 
-{
- id:37,
- name:"Black Heritage Chelsea",
- price:3500,
- image:"assets/products/37.jpg",
- category:"chelsea"
-},
+    {
+        id:37,
+        name:"Black Heritage Chelsea",
+        price:3500,
+        image:"37.jpg",
+        category:"chelsea"
+    },
 
-{
- id:38,
- name:"Ivory Heritage Chelsea",
- price:3500,
- image:"assets/products/38.jpg",
- category:"chelsea"
-},
+    {
+        id:38,
+        name:"Ivory Heritage Chelsea",
+        price:3500,
+        image:"38.jpg",
+        category:"chelsea"
+    },
 
-{
- id:39,
- name:"Amber Heritage Chelsea",
- price:3800,
- image:"assets/products/39.jpg",
- category:"chelsea"
-}
+    {
+        id:39,
+        name:"Amber Heritage Chelsea",
+        price:3800,
+        image:"39.jpg",
+        category:"chelsea"
+    }
 
 ];
 
@@ -3412,11 +3452,16 @@ const products = [
    HELPERS
 ========================================================= */
 
-const formatPrice = price =>
-    "₹" + price.toLocaleString("en-IN");
+const WA_NUMBER = "918522891829";
+
+function money(value){
+
+    return "₹" + value.toLocaleString("en-IN");
+
+}
 
 
-const categoryName = category => {
+function categoryLabel(category){
 
     if(category === "chelsea") return "Chelsea Boot";
 
@@ -3426,142 +3471,155 @@ const categoryName = category => {
 
     return "Footwear";
 
-};
+}
 
 
 /* =========================================================
    PRODUCT CARD
 ========================================================= */
 
-function productCard(product){
+function productHTML(product){
 
     return `
 
-    <article class="product-card">
+        <article class="product">
 
-        <div class="product-image">
+            <div class="product-image">
 
-            ${
-                product.id >= 35
-                ?
-                `<div class="product-badge">Premium</div>`
-                :
-                ""
-            }
+                ${
+                    product.id >= 35
+                    ?
+                    `<div class="product-tag">Premium</div>`
+                    :
+                    ""
+                }
 
-            <button
-                class="product-wishlist"
-                onclick="event.stopPropagation(); toggleWishlist(${product.id})"
-            >
-                ♡
-            </button>
+                <button
+                    class="heart"
+                    onclick="toggleWishlist(${product.id})"
+                    aria-label="Wishlist"
+                >
+                    ♡
+                </button>
 
-            <img
-                src="${product.image}"
-                alt="${product.name}"
-                loading="lazy"
-            >
-
-        </div>
-
-
-        <div class="product-info">
-
-            <div class="product-category">
-                ${categoryName(product.category)}
-            </div>
-
-            <h3 class="product-name">
-                ${product.name}
-            </h3>
-
-            <div class="product-bottom">
-
-                <div class="price">
-                    ${formatPrice(product.price)}
-                </div>
-
-                <div class="product-actions">
-
-                    <button
-                        class="mini-btn"
-                        onclick="openProduct(${product.id})"
-                        title="View"
-                    >
-                        +
-                    </button>
-
-                    <button
-                        class="mini-btn"
-                        onclick="addToCart(${product.id})"
-                        title="Add to bag"
-                    >
-                        ♧
-                    </button>
-
-                </div>
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    loading="lazy"
+                    onerror="this.style.opacity='.15'"
+                >
 
             </div>
 
-        </div>
 
-    </article>
+            <div class="product-info">
+
+                <div class="product-category">
+                    ${categoryLabel(product.category)}
+                </div>
+
+                <h3 class="product-name">
+                    ${product.name}
+                </h3>
+
+
+                <div class="product-row">
+
+                    <div class="price">
+                        ${money(product.price)}
+                    </div>
+
+
+                    <div class="product-buttons">
+
+                        <button
+                            class="mini"
+                            onclick="openProduct(${product.id})"
+                            aria-label="View product"
+                        >
+                            +
+                        </button>
+
+                        <button
+                            class="mini"
+                            onclick="addToCart(${product.id})"
+                            aria-label="Add to bag"
+                        >
+                            ♧
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
 
     `;
+
 }
 
 
 /* =========================================================
-   RENDER PRODUCTS
+   RENDER
 ========================================================= */
 
-function renderProducts(list, element){
+function render(list, elementId){
+
+    const element =
+        document.getElementById(elementId);
 
     if(!element) return;
 
     if(!list.length){
 
         element.innerHTML = `
-            <div class="no-products">
+            <div class="empty">
                 No products found.
             </div>
         `;
 
         return;
+
     }
 
     element.innerHTML =
-        list.map(productCard).join("");
+        list.map(productHTML).join("");
 
 }
 
 
 /* =========================================================
-   ALL COLLECTION
+   COLLECTION FILTER
 ========================================================= */
 
-let activeFilter = "all";
+let currentFilter = "all";
 
-function renderShop(){
+
+function renderCollection(){
 
     let list = [...products];
 
-    const search =
-        document
-        .getElementById("productSearch")
-        ?.value
-        .toLowerCase()
-        .trim();
 
-    if(activeFilter !== "all"){
+    if(currentFilter !== "all"){
 
         list =
             list.filter(
                 product =>
-                product.category === activeFilter
+                product.category === currentFilter
             );
 
     }
+
+
+    const search =
+        document
+        .getElementById("searchInput")
+        ?.value
+        .trim()
+        .toLowerCase();
+
 
     if(search){
 
@@ -3574,33 +3632,42 @@ function renderShop(){
 
     }
 
+
     const sort =
-        document.getElementById("productSort")?.value;
+        document
+        .getElementById("sortSelect")
+        ?.value;
+
 
     if(sort === "low"){
 
-        list.sort((a,b)=>a.price-b.price);
+        list.sort(
+            (a,b) => a.price - b.price
+        );
 
     }
+
 
     if(sort === "high"){
 
-        list.sort((a,b)=>b.price-a.price);
+        list.sort(
+            (a,b) => b.price - a.price
+        );
 
     }
 
+
     if(sort === "az"){
 
-        list.sort((a,b)=>
+        list.sort(
+            (a,b) =>
             a.name.localeCompare(b.name)
         );
 
     }
 
-    renderProducts(
-        list,
-        document.getElementById("productGrid")
-    );
+
+    render(list,"collectionGrid");
 
 }
 
@@ -3609,21 +3676,27 @@ function renderShop(){
    CATEGORY PAGES
 ========================================================= */
 
-function renderCategoryPages(){
+function renderAllCategoryPages(){
 
-    renderProducts(
-        products.filter(p => p.category === "chelsea"),
-        document.getElementById("chelseaGrid")
+    render(
+        products.filter(
+            product => product.category === "chelsea"
+        ),
+        "chelseaGrid"
     );
 
-    renderProducts(
-        products.filter(p => p.category === "loafer"),
-        document.getElementById("loaferGrid")
+
+    render(
+        products.filter(
+            product => product.category === "loafer"
+        ),
+        "loafersGrid"
     );
 
-    renderProducts(
+
+    render(
         products.slice(34),
-        document.getElementById("newGrid")
+        "newGrid"
     );
 
 }
@@ -3633,42 +3706,46 @@ function renderCategoryPages(){
    FILTER BUTTONS
 ========================================================= */
 
-document.querySelectorAll(".filter-btn")
+document
+.querySelectorAll(".filter")
 .forEach(button => {
 
-    button.addEventListener("click", () => {
+    button.addEventListener(
+        "click",
+        () => {
 
-        document
-        .querySelectorAll(".filter-btn")
-        .forEach(btn =>
-            btn.classList.remove("active")
-        );
+            document
+            .querySelectorAll(".filter")
+            .forEach(item =>
+                item.classList.remove("active")
+            );
 
-        button.classList.add("active");
+            button.classList.add("active");
 
-        activeFilter =
-            button.dataset.filter;
+            currentFilter =
+                button.dataset.filter;
 
-        renderShop();
+            renderCollection();
 
-    });
+        }
+    );
 
 });
 
 
 document
-.getElementById("productSearch")
-?.addEventListener(
+.getElementById("searchInput")
+.addEventListener(
     "input",
-    renderShop
+    renderCollection
 );
 
 
 document
-.getElementById("productSort")
-?.addEventListener(
+.getElementById("sortSelect")
+.addEventListener(
     "change",
-    renderShop
+    renderCollection
 );
 
 
@@ -3678,14 +3755,16 @@ document
 
 let cart =
     JSON.parse(
-        localStorage.getItem("walkinchelsea-cart")
+        localStorage.getItem(
+            "walkinchelsea_cart"
+        )
     ) || [];
 
 
 function saveCart(){
 
     localStorage.setItem(
-        "walkinchelsea-cart",
+        "walkinchelsea_cart",
         JSON.stringify(cart)
     );
 
@@ -3697,25 +3776,32 @@ function saveCart(){
 function addToCart(id){
 
     const product =
-        products.find(p => p.id === id);
+        products.find(
+            item => item.id === id
+        );
 
     if(!product) return;
 
+
     const existing =
-        cart.find(item => item.id === id);
+        cart.find(
+            item => item.id === id
+        );
+
 
     if(existing){
 
-        existing.qty++;
+        existing.qty += 1;
 
     }else{
 
         cart.push({
-            id:product.id,
+            id:id,
             qty:1
         });
 
     }
+
 
     saveCart();
 
@@ -3727,7 +3813,9 @@ function addToCart(id){
 function removeFromCart(id){
 
     cart =
-        cart.filter(item => item.id !== id);
+        cart.filter(
+            item => item.id !== id
+        );
 
     saveCart();
 
@@ -3738,31 +3826,49 @@ function updateCart(){
 
     const count =
         cart.reduce(
-            (sum,item)=>sum + item.qty,
+            (sum,item) =>
+            sum + item.qty,
             0
         );
 
-    document.getElementById("cartCount").textContent =
-        count;
+
+    document
+    .getElementById("cartCount")
+    .textContent = count;
 
 
-    const cartItems =
-        document.getElementById("cartItems");
+    const container =
+        document.getElementById(
+            "cartItems"
+        );
+
 
     if(!cart.length){
 
-        cartItems.innerHTML = `
-            <div style="text-align:center;padding:70px 20px;color:#666">
-                <div style="font-size:45px;margin-bottom:15px">
+        container.innerHTML = `
+
+            <div style="
+                text-align:center;
+                padding:75px 20px;
+                color:#666;
+            ">
+
+                <div style="
+                    font-size:42px;
+                    margin-bottom:15px;
+                ">
                     ♧
                 </div>
 
                 Your bag is empty.
+
             </div>
+
         `;
 
-        document.getElementById("cartTotal").textContent =
-            "₹0";
+        document
+        .getElementById("cartTotal")
+        .textContent = "₹0";
 
         return;
 
@@ -3772,57 +3878,68 @@ function updateCart(){
     let total = 0;
 
 
-    cartItems.innerHTML =
+    container.innerHTML =
         cart.map(item => {
 
             const product =
-                products.find(p => p.id === item.id);
+                products.find(
+                    p => p.id === item.id
+                );
 
             if(!product) return "";
 
-            total += product.price * item.qty;
+
+            total +=
+                product.price * item.qty;
+
 
             return `
 
-            <div class="cart-item">
+                <div class="cart-item">
 
-                <img
-                    src="${product.image}"
-                    alt="${product.name}"
-                >
+                    <img
+                        src="${product.image}"
+                        alt="${product.name}"
+                    >
 
-                <div>
+                    <div>
 
-                    <h4>
-                        ${product.name}
-                    </h4>
+                        <h4>
+                            ${product.name}
+                        </h4>
 
-                    <p>
-                        ${formatPrice(product.price)}
-                        × ${item.qty}
-                    </p>
+                        <p>
+                            ${money(product.price)}
+                            × ${item.qty}
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="remove"
+                        onclick="removeFromCart(${product.id})"
+                    >
+                        Remove
+                    </button>
 
                 </div>
-
-                <button
-                    class="remove-cart"
-                    onclick="removeFromCart(${product.id})"
-                >
-                    Remove
-                </button>
-
-            </div>
 
             `;
 
         }).join("");
 
 
-    document.getElementById("cartTotal").textContent =
-        formatPrice(total);
+    document
+    .getElementById("cartTotal")
+    .textContent =
+        money(total);
 
 }
 
+
+/* =========================================================
+   CART OPEN/CLOSE
+========================================================= */
 
 function openCart(){
 
@@ -3830,7 +3947,9 @@ function openCart(){
     .getElementById("cartOverlay")
     .classList.add("open");
 
-    document.body.classList.add("no-scroll");
+    document
+    .body
+    .classList.add("lock");
 
 }
 
@@ -3841,13 +3960,15 @@ function closeCart(){
     .getElementById("cartOverlay")
     .classList.remove("open");
 
-    document.body.classList.remove("no-scroll");
+    document
+    .body
+    .classList.remove("lock");
 
 }
 
 
 document
-.getElementById("cartBtn")
+.getElementById("cartButton")
 .addEventListener(
     "click",
     openCart
@@ -3866,10 +3987,15 @@ document
 .getElementById("cartOverlay")
 .addEventListener(
     "click",
-    e => {
+    event => {
 
-        if(e.target.id === "cartOverlay"){
+        if(
+            event.target.id ===
+            "cartOverlay"
+        ){
+
             closeCart();
+
         }
 
     }
@@ -3877,18 +4003,20 @@ document
 
 
 /* =========================================================
-   WHATSAPP ORDER
+   WHATSAPP CART ORDER
 ========================================================= */
 
 document
-.getElementById("whatsappOrder")
+.getElementById("orderCart")
 .addEventListener(
     "click",
     () => {
 
         if(!cart.length){
 
-            alert("Your bag is empty.");
+            alert(
+                "Your bag is empty."
+            );
 
             return;
 
@@ -3899,18 +4027,30 @@ document
             "Hello WALKINCHELSEA!%0A%0A";
 
         message +=
-            "I would like to enquire about:%0A%0A";
+            "I am interested in these products:%0A%0A";
 
 
         cart.forEach(item => {
 
             const product =
-                products.find(p => p.id === item.id);
+                products.find(
+                    p => p.id === item.id
+                );
 
             if(product){
 
                 message +=
-                    `• ${product.name} — ${formatPrice(product.price)} × ${item.qty}%0A`;
+                    "• " +
+                    encodeURIComponent(
+                        product.name
+                    ) +
+                    " — " +
+                    encodeURIComponent(
+                        money(product.price)
+                    ) +
+                    " × " +
+                    item.qty +
+                    "%0A";
 
             }
 
@@ -3918,11 +4058,13 @@ document
 
 
         message +=
-            "%0AThank you!";
+            "%0APlease share availability and details.";
 
 
         window.open(
-            "https://wa.me/918522891829?text=" +
+            "https://wa.me/" +
+            WA_NUMBER +
+            "?text=" +
             message,
             "_blank"
         );
@@ -3941,33 +4083,54 @@ let selectedProduct = null;
 function openProduct(id){
 
     const product =
-        products.find(p => p.id === id);
+        products.find(
+            item => item.id === id
+        );
 
     if(!product) return;
 
+
     selectedProduct = product;
-
-    document.getElementById("modalImage").src =
-        product.image;
-
-    document.getElementById("modalImage").alt =
-        product.name;
-
-    document.getElementById("modalName").textContent =
-        product.name;
-
-    document.getElementById("modalPrice").textContent =
-        formatPrice(product.price);
-
-    document.getElementById("modalCategory").textContent =
-        categoryName(product.category);
 
 
     document
-    .getElementById("productModal")
+    .getElementById("modalImage")
+    .src = product.image;
+
+
+    document
+    .getElementById("modalImage")
+    .alt = product.name;
+
+
+    document
+    .getElementById("modalName")
+    .textContent =
+        product.name;
+
+
+    document
+    .getElementById("modalPrice")
+    .textContent =
+        money(product.price);
+
+
+    document
+    .getElementById("modalCategory")
+    .textContent =
+        categoryLabel(
+            product.category
+        );
+
+
+    document
+    .getElementById("modalOverlay")
     .classList.add("open");
 
-    document.body.classList.add("no-scroll");
+
+    document
+    .body
+    .classList.add("lock");
 
 }
 
@@ -3975,10 +4138,12 @@ function openProduct(id){
 function closeModal(){
 
     document
-    .getElementById("productModal")
+    .getElementById("modalOverlay")
     .classList.remove("open");
 
-    document.body.classList.remove("no-scroll");
+    document
+    .body
+    .classList.remove("lock");
 
 }
 
@@ -3992,13 +4157,18 @@ document
 
 
 document
-.getElementById("productModal")
+.getElementById("modalOverlay")
 .addEventListener(
     "click",
-    e => {
+    event => {
 
-        if(e.target.id === "productModal"){
+        if(
+            event.target.id ===
+            "modalOverlay"
+        ){
+
             closeModal();
+
         }
 
     }
@@ -4011,13 +4181,13 @@ document
     "click",
     () => {
 
-        if(selectedProduct){
+        if(!selectedProduct) return;
 
-            addToCart(selectedProduct.id);
+        addToCart(
+            selectedProduct.id
+        );
 
-            closeModal();
-
-        }
+        closeModal();
 
     }
 );
@@ -4031,11 +4201,24 @@ document
 
         if(!selectedProduct) return;
 
+
         const message =
-            `Hello WALKINCHELSEA!%0A%0AI am interested in ${selectedProduct.name} priced at ${formatPrice(selectedProduct.price)}.%0A%0ACan you please share more details?`;
+            "Hello WALKINCHELSEA!%0A%0A" +
+            "I am interested in " +
+            encodeURIComponent(
+                selectedProduct.name
+            ) +
+            " priced at " +
+            encodeURIComponent(
+                money(selectedProduct.price)
+            ) +
+            ".%0A%0APlease share more details.";
+
 
         window.open(
-            "https://wa.me/918522891829?text=" +
+            "https://wa.me/" +
+            WA_NUMBER +
+            "?text=" +
             message,
             "_blank"
         );
@@ -4051,24 +4234,27 @@ document
 function toggleWishlist(id){
 
     const key =
-        "walkin-wishlist-" + id;
+        "wc_wishlist_" + id;
 
-    const active =
-        localStorage.getItem(key) === "1";
+    const current =
+        localStorage.getItem(key);
+
 
     localStorage.setItem(
         key,
-        active ? "0" : "1"
+        current === "1"
+        ? "0"
+        : "1"
     );
 
 }
 
 
 /* =========================================================
-   SPA ROUTER
+   ROUTER
 ========================================================= */
 
-const pages = [
+const pageNames = [
     "home",
     "shop",
     "chelsea",
@@ -4080,43 +4266,53 @@ const pages = [
 ];
 
 
-function showPage(page){
+function showPage(name){
 
-    if(!pages.includes(page)){
-        page = "home";
+    if(
+        !pageNames.includes(name)
+    ){
+
+        name = "home";
+
     }
 
 
     document
     .querySelectorAll(".page")
-    .forEach(p =>
-        p.classList.remove("active")
+    .forEach(page =>
+        page.classList.remove("active")
     );
 
 
     const target =
         document.getElementById(
-            "page-" + page
+            "page-" + name
         );
 
+
     if(target){
+
         target.classList.add("active");
+
     }
 
 
     document
-    .querySelectorAll(".nav-link")
+    .querySelectorAll(".nav-links a")
     .forEach(link => {
-
-        const href =
-            link.getAttribute("href");
 
         link.classList.toggle(
             "active",
-            href === "#" + page
+            link.getAttribute("href") ===
+            "#" + name
         );
 
     });
+
+
+    document
+    .getElementById("mobileMenu")
+    .classList.remove("open");
 
 
     window.scrollTo({
@@ -4125,19 +4321,28 @@ function showPage(page){
     });
 
 
-    document
-    .getElementById("mobileMenu")
-    .classList.remove("open");
+    if(name === "shop"){
+
+        setTimeout(
+            renderCollection,
+            30
+        );
+
+    }
 
 }
 
 
 function route(){
 
-    const hash =
-        location.hash.replace("#","") || "home";
+    const name =
+        location.hash
+        .replace("#","")
+        .trim() ||
+        "home";
 
-    showPage(hash);
+
+    showPage(name);
 
 }
 
@@ -4149,11 +4354,11 @@ window.addEventListener(
 
 
 /* =========================================================
-   MOBILE MENU
+   MOBILE
 ========================================================= */
 
 document
-.getElementById("menuBtn")
+.getElementById("mobileButton")
 .addEventListener(
     "click",
     () => {
@@ -4167,7 +4372,7 @@ document
 
 
 document
-.querySelectorAll(".mobile-link")
+.querySelectorAll(".mobile-menu a")
 .forEach(link => {
 
     link.addEventListener(
@@ -4189,97 +4394,117 @@ document
 ========================================================= */
 
 document
-.getElementById("searchBtn")
+.getElementById("searchButton")
 .addEventListener(
     "click",
     () => {
 
         location.hash = "shop";
 
-        setTimeout(() => {
 
-            const search =
-                document.getElementById(
-                    "productSearch"
-                );
+        setTimeout(
+            () => {
 
-            if(search){
+                const input =
+                    document.getElementById(
+                        "searchInput"
+                    );
 
-                search.focus();
 
-                window.scrollTo({
-                    top:document.querySelector(
-                        "#page-shop .section"
-                    ).offsetTop - 80,
-                    behavior:"smooth"
-                });
+                if(input){
 
-            }
+                    input.focus();
 
-        },300);
+                }
+
+            },
+            350
+        );
 
     }
 );
 
 
 /* =========================================================
-   REVEAL ANIMATION
+   ESC KEY
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(event.key === "Escape"){
+
+            closeCart();
+            closeModal();
+
+            document
+            .getElementById("mobileMenu")
+            .classList.remove("open");
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   REVEAL
 ========================================================= */
 
 const revealObserver =
     new IntersectionObserver(
         entries => {
 
-            entries.forEach(entry => {
+            entries.forEach(
+                entry => {
 
-                if(entry.isIntersecting){
+                    if(
+                        entry.isIntersecting
+                    ){
 
-                    entry.target.classList.add("show");
+                        entry.target
+                        .classList
+                        .add("show");
+
+                    }
 
                 }
-
-            });
+            );
 
         },
         {
-            threshold:.12
+            threshold:.1
         }
     );
 
 
-function initReveal(){
+function startReveal(){
 
     document
     .querySelectorAll(".reveal")
-    .forEach(el =>
-        revealObserver.observe(el)
+    .forEach(
+        element =>
+        revealObserver.observe(element)
     );
 
 }
 
 
 /* =========================================================
-   KEYBOARD
+   INITIAL LOAD
 ========================================================= */
 
-document.addEventListener(
-    "keydown",
-    e => {
+renderCollection();
 
-        if(e.key === "Escape"){
+renderAllCategoryPages();
 
-            closeCart();
-            closeModal();
+updateCart();
 
-        }
+startReveal();
 
-    }
-);
+route();
 
-
-/* =========================================================
-   INITIALIZE
-========================================================= */
 
 window.addEventListener(
     "load",
@@ -4290,7 +4515,8 @@ window.addEventListener(
 
                 document
                 .getElementById("loader")
-                .classList.add("hide");
+                .classList
+                .add("hide");
 
             },
             900
@@ -4298,17 +4524,6 @@ window.addEventListener(
 
     }
 );
-
-
-renderShop();
-
-renderCategoryPages();
-
-updateCart();
-
-initReveal();
-
-route();
 
 </script>
 
