@@ -1,0 +1,4565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WALKINCHELSEA — Premium Footwear</title>
+
+<meta name="description" content="WALKINCHELSEA — Premium Chelsea boots, loafers and luxury footwear. Walk in confidence.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --black:#060606;
+    --black2:#0b0b0b;
+    --black3:#111;
+    --card:#121212;
+    --gold:#c9a55b;
+    --gold2:#e3c77d;
+    --cream:#f4efe5;
+    --white:#fff;
+    --muted:#8c8c8c;
+    --muted2:#5f5f5f;
+    --line:rgba(255,255,255,.09);
+    --glass:rgba(255,255,255,.045);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+    background:var(--black);
+}
+
+body{
+    font-family:"DM Sans",sans-serif;
+    background:var(--black);
+    color:var(--cream);
+    overflow-x:hidden;
+}
+
+body.lock{
+    overflow:hidden;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar{
+    width:7px;
+}
+
+::-webkit-scrollbar-track{
+    background:#050505;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#49391e;
+    border-radius:20px;
+}
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+#loader{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    background:#050505;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:opacity .8s ease,visibility .8s ease;
+}
+
+#loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-inner{
+    text-align:center;
+}
+
+.loader-brand{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(25px,5vw,48px);
+    letter-spacing:7px;
+}
+
+.loader-sub{
+    margin-top:10px;
+    font-size:8px;
+    letter-spacing:4px;
+    color:var(--gold);
+}
+
+.loader-line{
+    width:190px;
+    height:1px;
+    background:#222;
+    margin:25px auto;
+    overflow:hidden;
+}
+
+.loader-line span{
+    display:block;
+    height:100%;
+    width:45%;
+    background:var(--gold);
+    animation:loader 1.2s infinite;
+}
+
+@keyframes loader{
+    from{transform:translateX(-120%)}
+    to{transform:translateX(340%)}
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:82px;
+    z-index:5000;
+    background:rgba(6,6,6,.68);
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.nav{
+    width:min(1450px,94%);
+    height:100%;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-shrink:0;
+}
+
+.brand img{
+    width:44px;
+    height:44px;
+    object-fit:contain;
+    border-radius:50%;
+}
+
+.brand-name{
+    font-family:"Playfair Display",serif;
+    font-size:20px;
+    letter-spacing:3px;
+}
+
+.brand-sub{
+    display:block;
+    font-family:"DM Sans",sans-serif;
+    font-size:7px;
+    letter-spacing:3px;
+    color:var(--gold);
+    margin-top:3px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:24px;
+}
+
+.nav-links a{
+    position:relative;
+    color:#aaa;
+    font-size:10px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    transition:.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    color:#fff;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-9px;
+    width:0;
+    height:1px;
+    background:var(--gold);
+    transition:.3s;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after{
+    width:100%;
+}
+
+.nav-tools{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.icon-btn{
+    width:40px;
+    height:40px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.025);
+    color:#ddd;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.3s;
+}
+
+.icon-btn:hover{
+    color:var(--gold);
+    border-color:rgba(201,165,91,.55);
+    transform:translateY(-2px);
+}
+
+.cart-btn{
+    position:relative;
+}
+
+.cart-count{
+    position:absolute;
+    top:-3px;
+    right:-3px;
+    min-width:17px;
+    height:17px;
+    padding:0 4px;
+    border-radius:20px;
+    background:var(--gold);
+    color:#000;
+    font-size:8px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.mobile-trigger{
+    display:none;
+}
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.mobile-menu{
+    position:fixed;
+    inset:0;
+    z-index:4500;
+    background:#070707;
+    padding:120px 30px 40px;
+    transform:translateX(100%);
+    transition:.45s cubic-bezier(.77,0,.18,1);
+    overflow:auto;
+}
+
+.mobile-menu.open{
+    transform:translateX(0);
+}
+
+.mobile-menu a{
+    display:block;
+    padding:15px 0;
+    border-bottom:1px solid var(--line);
+    font-family:"Playfair Display",serif;
+    font-size:40px;
+}
+
+/* =========================================================
+   PAGE SYSTEM
+========================================================= */
+
+.page{
+    display:none;
+    min-height:100vh;
+}
+
+.page.active{
+    display:block;
+}
+
+.container{
+    width:min(1380px,92%);
+    margin:auto;
+}
+
+.section{
+    padding:120px 0;
+}
+
+.eyebrow{
+    color:var(--gold);
+    font-size:9px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    margin-bottom:17px;
+}
+
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:40px;
+    margin-bottom:55px;
+}
+
+.title{
+    font-family:"Playfair Display",serif;
+    font-weight:400;
+    font-size:clamp(48px,6vw,82px);
+    line-height:.94;
+}
+
+.title em{
+    color:var(--gold);
+}
+
+.description{
+    max-width:520px;
+    color:#888;
+    font-size:13px;
+    line-height:1.9;
+}
+
+.gold-line{
+    width:60px;
+    height:1px;
+    background:var(--gold);
+    margin:25px 0;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:15px 25px;
+    border:1px solid rgba(201,165,91,.45);
+    background:transparent;
+    color:white;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:9px;
+    transition:.35s;
+}
+
+.btn:hover{
+    background:var(--gold);
+    color:#050505;
+    border-color:var(--gold);
+    transform:translateY(-3px);
+}
+
+.btn-gold{
+    background:var(--gold);
+    color:#050505;
+    border-color:var(--gold);
+}
+
+.btn-gold:hover{
+    background:var(--gold2);
+}
+
+/* =========================================================
+   HOME HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 76% 48%,rgba(201,165,91,.16),transparent 29%),
+        radial-gradient(circle at 18% 85%,rgba(255,255,255,.035),transparent 25%);
+}
+
+.hero-grid{
+    position:absolute;
+    inset:0;
+    opacity:.075;
+    background-image:
+        linear-gradient(rgba(255,255,255,.35) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.35) 1px,transparent 1px);
+    background-size:80px 80px;
+    mask-image:linear-gradient(to bottom,transparent,black 25%,black 75%,transparent);
+}
+
+.hero-content{
+    position:relative;
+    z-index:5;
+    width:min(1380px,92%);
+    margin:auto;
+    padding-top:80px;
+}
+
+.hero-kicker{
+    color:var(--gold);
+    font-size:9px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    margin-bottom:27px;
+}
+
+.hero h1{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(72px,10vw,155px);
+    line-height:.76;
+    font-weight:400;
+    letter-spacing:-6px;
+}
+
+.hero h1 em{
+    color:var(--gold);
+    font-style:italic;
+}
+
+.hero-text{
+    margin-top:40px;
+    max-width:490px;
+    color:#8b8b8b;
+    line-height:1.85;
+    font-size:13px;
+}
+
+.hero-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:32px;
+}
+
+.hero-object{
+    position:absolute;
+    z-index:2;
+    width:500px;
+    height:500px;
+    right:4%;
+    top:50%;
+    transform:translateY(-50%);
+    perspective:1000px;
+}
+
+.orbit{
+    position:absolute;
+    inset:0;
+    border:1px solid rgba(201,165,91,.18);
+    border-radius:50%;
+    animation:orbit 18s linear infinite;
+}
+
+.orbit:nth-child(2){
+    inset:50px;
+    transform:rotateX(70deg);
+    animation-duration:14s;
+}
+
+.orbit:nth-child(3){
+    inset:100px;
+    transform:rotateY(70deg);
+    animation-duration:11s;
+}
+
+.orbit:nth-child(4){
+    inset:145px;
+    border-color:rgba(255,255,255,.07);
+    animation-duration:9s;
+}
+
+@keyframes orbit{
+    to{transform:rotate(360deg)}
+}
+
+.hero-core{
+    position:absolute;
+    width:310px;
+    height:310px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:
+        radial-gradient(circle at 35% 30%,rgba(255,255,255,.09),transparent 18%),
+        radial-gradient(circle,rgba(201,165,91,.16),transparent 60%),
+        #111;
+    box-shadow:
+        0 0 100px rgba(201,165,91,.09),
+        inset 0 0 80px rgba(255,255,255,.025);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hero-core span{
+    font-family:"Playfair Display",serif;
+    font-size:80px;
+    color:rgba(201,165,91,.48);
+    letter-spacing:4px;
+}
+
+.hero-card{
+    position:absolute;
+    right:11%;
+    bottom:12%;
+    z-index:10;
+    padding:17px 20px;
+    min-width:180px;
+    background:rgba(10,10,10,.7);
+    border:1px solid var(--line);
+    backdrop-filter:blur(16px);
+}
+
+.hero-card small{
+    display:block;
+    color:#666;
+    font-size:7px;
+    letter-spacing:3px;
+    margin-bottom:7px;
+}
+
+.hero-card strong{
+    font-family:"Playfair Display",serif;
+    font-size:18px;
+    font-weight:400;
+}
+
+.hero-bottom{
+    position:absolute;
+    bottom:25px;
+    left:4%;
+    right:4%;
+    display:flex;
+    justify-content:space-between;
+    color:#505050;
+    font-size:8px;
+    letter-spacing:3px;
+}
+
+/* =========================================================
+   MARQUEE
+========================================================= */
+
+.marquee{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:18px 0;
+    background:#090909;
+}
+
+.marquee-track{
+    display:inline-flex;
+    align-items:center;
+    gap:45px;
+    animation:marquee 28s linear infinite;
+}
+
+.marquee span{
+    font-family:"Playfair Display",serif;
+    font-size:22px;
+    color:#686868;
+}
+
+.marquee b{
+    color:var(--gold);
+    font-size:10px;
+}
+
+@keyframes marquee{
+    to{transform:translateX(-50%)}
+}
+
+/* =========================================================
+   CATEGORY
+========================================================= */
+
+.category-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:14px;
+}
+
+.category{
+    min-height:440px;
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:#101010;
+}
+
+.category-bg{
+    position:absolute;
+    inset:0;
+    transition:.7s;
+    background:
+        radial-gradient(circle at 50% 42%,rgba(201,165,91,.22),transparent 34%),
+        linear-gradient(145deg,#191919,#070707);
+}
+
+.category:hover .category-bg{
+    transform:scale(1.08);
+}
+
+.category::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,rgba(0,0,0,.95),transparent 60%);
+}
+
+.category-content{
+    position:absolute;
+    left:28px;
+    right:20px;
+    bottom:28px;
+    z-index:2;
+}
+
+.category-content h3{
+    font-family:"Playfair Display",serif;
+    font-weight:400;
+    font-size:38px;
+}
+
+.category-content p{
+    color:#777;
+    font-size:11px;
+    margin-top:8px;
+}
+
+.category-content a{
+    display:inline-block;
+    margin-top:18px;
+    color:var(--gold);
+    font-size:8px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+/* =========================================================
+   FEATURE STRIP
+========================================================= */
+
+.feature-strip{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+}
+
+.feature{
+    padding:32px 25px;
+    border-right:1px solid var(--line);
+}
+
+.feature:last-child{
+    border-right:0;
+}
+
+.feature-no{
+    color:var(--gold);
+    font-size:8px;
+    letter-spacing:2px;
+}
+
+.feature h3{
+    font-family:"Playfair Display",serif;
+    font-size:20px;
+    font-weight:400;
+    margin:12px 0 7px;
+}
+
+.feature p{
+    color:#666;
+    font-size:10px;
+    line-height:1.7;
+}
+
+/* =========================================================
+   EDITORIAL
+========================================================= */
+
+.editorial{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:80px;
+    align-items:center;
+}
+
+.editorial-art{
+    height:600px;
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:
+        radial-gradient(circle at center,rgba(201,165,91,.18),transparent 40%),
+        #101010;
+}
+
+.editorial-art::before{
+    content:"";
+    position:absolute;
+    width:390px;
+    height:390px;
+    border:1px solid rgba(201,165,91,.25);
+    border-radius:50%;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    animation:orbit 22s linear infinite;
+}
+
+.editorial-art::after{
+    content:"";
+    position:absolute;
+    width:270px;
+    height:270px;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:50%;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+
+.editorial-mark{
+    position:absolute;
+    left:30px;
+    bottom:25px;
+    font-family:"Playfair Display",serif;
+    font-size:70px;
+    color:rgba(201,165,91,.55);
+}
+
+.editorial-copy h2{
+    font-family:"Playfair Display",serif;
+    font-size:70px;
+    font-weight:400;
+    line-height:.9;
+}
+
+.editorial-copy h2 em{
+    color:var(--gold);
+}
+
+.editorial-copy p{
+    color:#888;
+    font-size:13px;
+    line-height:1.9;
+    margin:20px 0;
+}
+
+/* =========================================================
+   PAGE HERO
+========================================================= */
+
+.page-hero{
+    min-height:56vh;
+    display:flex;
+    align-items:flex-end;
+    padding:160px 0 75px;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 80% 45%,rgba(201,165,91,.11),transparent 28%);
+    border-bottom:1px solid var(--line);
+}
+
+.page-hero-number{
+    position:absolute;
+    right:5%;
+    bottom:20px;
+    font-family:"Playfair Display",serif;
+    font-size:170px;
+    color:rgba(255,255,255,.025);
+}
+
+.page-title{
+    font-family:"Playfair Display",serif;
+    font-weight:400;
+    font-size:clamp(65px,10vw,135px);
+    line-height:.82;
+    letter-spacing:-4px;
+}
+
+.page-title em{
+    color:var(--gold);
+}
+
+/* =========================================================
+   PRODUCT TOOLBAR
+========================================================= */
+
+.toolbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:35px;
+}
+
+.filters{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+}
+
+.filter{
+    border:1px solid var(--line);
+    background:transparent;
+    color:#777;
+    padding:10px 15px;
+    font-size:8px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    transition:.3s;
+}
+
+.filter:hover,
+.filter.active{
+    background:var(--gold);
+    border-color:var(--gold);
+    color:#000;
+}
+
+.search-tools{
+    display:flex;
+    gap:7px;
+}
+
+.search,
+.sort{
+    background:#101010;
+    color:#ddd;
+    border:1px solid var(--line);
+    outline:none;
+    padding:11px 13px;
+    font-size:10px;
+}
+
+.search{
+    width:210px;
+}
+
+.sort{
+    min-width:160px;
+}
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:17px;
+}
+
+.product{
+    background:#101010;
+    border:1px solid rgba(255,255,255,.065);
+    overflow:hidden;
+    transition:.45s;
+}
+
+.product:hover{
+    transform:translateY(-7px);
+    border-color:rgba(201,165,91,.35);
+    box-shadow:0 25px 60px rgba(0,0,0,.38);
+}
+
+.product-image{
+    height:340px;
+    position:relative;
+    overflow:hidden;
+    background:#181818;
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.7s;
+}
+
+.product:hover .product-image img{
+    transform:scale(1.06);
+}
+
+.product-tag{
+    position:absolute;
+    left:13px;
+    top:13px;
+    z-index:3;
+    padding:7px 9px;
+    background:rgba(0,0,0,.72);
+    color:var(--gold);
+    font-size:7px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    backdrop-filter:blur(8px);
+}
+
+.heart{
+    position:absolute;
+    right:13px;
+    top:13px;
+    z-index:4;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:rgba(0,0,0,.55);
+    border:1px solid rgba(255,255,255,.15);
+    color:#fff;
+}
+
+.product-info{
+    padding:19px;
+}
+
+.product-category{
+    color:var(--gold);
+    font-size:7px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.product-name{
+    font-family:"Playfair Display",serif;
+    font-size:20px;
+    font-weight:400;
+    margin-top:7px;
+}
+
+.product-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    margin-top:15px;
+}
+
+.price{
+    font-size:13px;
+    color:#eee;
+}
+
+.product-buttons{
+    display:flex;
+    gap:6px;
+}
+
+.mini{
+    width:33px;
+    height:33px;
+    border:1px solid var(--line);
+    background:transparent;
+    color:#ddd;
+    transition:.3s;
+}
+
+.mini:hover{
+    background:var(--gold);
+    color:#000;
+    border-color:var(--gold);
+}
+
+.empty{
+    grid-column:1/-1;
+    padding:80px 20px;
+    text-align:center;
+    color:#666;
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--line);
+    margin-top:70px;
+}
+
+.stat{
+    padding:35px 20px;
+    border-right:1px solid var(--line);
+}
+
+.stat:last-child{
+    border-right:0;
+}
+
+.stat strong{
+    font-family:"Playfair Display",serif;
+    font-weight:400;
+    font-size:48px;
+    color:var(--gold);
+}
+
+.stat span{
+    display:block;
+    color:#666;
+    font-size:8px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-top:7px;
+}
+
+/* =========================================================
+   JOURNAL
+========================================================= */
+
+.journal-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:17px;
+}
+
+.journal-card{
+    border:1px solid var(--line);
+    background:#101010;
+}
+
+.journal-art{
+    height:270px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    background:
+        radial-gradient(circle,rgba(201,165,91,.18),transparent 38%),
+        linear-gradient(145deg,#191919,#080808);
+}
+
+.journal-art span{
+    font-family:"Playfair Display",serif;
+    font-size:70px;
+    color:rgba(201,165,91,.35);
+}
+
+.journal-copy{
+    padding:25px;
+}
+
+.journal-copy small{
+    color:var(--gold);
+    font-size:7px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.journal-copy h3{
+    font-family:"Playfair Display",serif;
+    font-weight:400;
+    font-size:25px;
+    margin:9px 0;
+}
+
+.journal-copy p{
+    color:#707070;
+    font-size:11px;
+    line-height:1.8;
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+}
+
+.contact-title{
+    font-family:"Playfair Display",serif;
+    font-size:75px;
+    font-weight:400;
+    line-height:.9;
+}
+
+.contact-title em{
+    color:var(--gold);
+}
+
+.contact-list{
+    margin-top:45px;
+}
+
+.contact-item{
+    padding:21px 0;
+    border-bottom:1px solid var(--line);
+}
+
+.contact-item small{
+    display:block;
+    color:var(--gold);
+    font-size:7px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:7px;
+}
+
+.contact-item p,
+.contact-item a{
+    color:#ddd;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.contact-box{
+    border:1px solid var(--line);
+    background:#101010;
+    padding:45px;
+}
+
+.contact-box h2{
+    font-family:"Playfair Display",serif;
+    font-size:38px;
+    font-weight:400;
+}
+
+.contact-box p{
+    color:#777;
+    line-height:1.8;
+    font-size:12px;
+    margin:15px 0 28px;
+}
+
+/* =========================================================
+   NEWSLETTER
+========================================================= */
+
+.newsletter{
+    padding:90px 0;
+    text-align:center;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:#101010;
+}
+
+.newsletter h2{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(38px,5vw,65px);
+    font-weight:400;
+}
+
+.newsletter p{
+    color:#777;
+    font-size:12px;
+    margin:14px auto 30px;
+}
+
+.newsletter-form{
+    max-width:500px;
+    margin:auto;
+    display:flex;
+}
+
+.newsletter-form input{
+    flex:1;
+    background:#080808;
+    border:1px solid var(--line);
+    color:#fff;
+    padding:15px;
+    outline:none;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    background:#050505;
+    padding:75px 0 25px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1.5fr;
+    gap:50px;
+    margin-bottom:60px;
+}
+
+.footer-brand h2{
+    font-family:"Playfair Display",serif;
+    font-weight:400;
+    font-size:30px;
+    letter-spacing:2px;
+}
+
+.footer-brand p{
+    max-width:370px;
+    color:#606060;
+    font-size:11px;
+    line-height:1.8;
+    margin-top:15px;
+}
+
+.footer-col h4{
+    color:var(--gold);
+    font-size:8px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:18px;
+}
+
+.footer-col a{
+    display:block;
+    color:#686868;
+    font-size:10px;
+    margin:11px 0;
+    transition:.3s;
+}
+
+.footer-col a:hover{
+    color:#fff;
+}
+
+.footer-bottom{
+    border-top:1px solid var(--line);
+    padding-top:23px;
+    display:flex;
+    justify-content:space-between;
+    color:#484848;
+    font-size:8px;
+    letter-spacing:1px;
+}
+
+/* =========================================================
+   CART
+========================================================= */
+
+.cart-overlay{
+    position:fixed;
+    inset:0;
+    z-index:8000;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(6px);
+    opacity:0;
+    visibility:hidden;
+    transition:.35s;
+}
+
+.cart-overlay.open{
+    opacity:1;
+    visibility:visible;
+}
+
+.cart{
+    position:absolute;
+    right:0;
+    top:0;
+    height:100%;
+    width:min(470px,100%);
+    background:#101010;
+    border-left:1px solid var(--line);
+    transform:translateX(100%);
+    transition:.45s cubic-bezier(.77,0,.18,1);
+    display:flex;
+    flex-direction:column;
+}
+
+.cart-overlay.open .cart{
+    transform:translateX(0);
+}
+
+.cart-header{
+    padding:24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid var(--line);
+}
+
+.cart-header h2{
+    font-family:"Playfair Display",serif;
+    font-weight:400;
+    font-size:28px;
+}
+
+.close{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    background:transparent;
+    color:#fff;
+}
+
+.cart-items{
+    flex:1;
+    overflow:auto;
+    padding:20px;
+}
+
+.cart-item{
+    display:grid;
+    grid-template-columns:75px 1fr auto;
+    gap:14px;
+    padding:15px 0;
+    border-bottom:1px solid var(--line);
+    align-items:center;
+}
+
+.cart-item img{
+    width:75px;
+    height:85px;
+    object-fit:cover;
+}
+
+.cart-item h4{
+    font-family:"Playfair Display",serif;
+    font-size:15px;
+    font-weight:400;
+}
+
+.cart-item p{
+    color:var(--gold);
+    font-size:10px;
+    margin-top:5px;
+}
+
+.remove{
+    background:none;
+    border:0;
+    color:#666;
+    font-size:10px;
+}
+
+.cart-footer{
+    padding:24px;
+    border-top:1px solid var(--line);
+}
+
+.total{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:17px;
+    font-size:13px;
+}
+
+.total strong{
+    color:var(--gold);
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal-overlay{
+    position:fixed;
+    inset:0;
+    z-index:9000;
+    background:rgba(0,0,0,.82);
+    backdrop-filter:blur(10px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+}
+
+.modal-overlay.open{
+    opacity:1;
+    visibility:visible;
+}
+
+.modal{
+    width:min(980px,100%);
+    max-height:92vh;
+    overflow:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    background:#101010;
+    border:1px solid var(--line);
+    transform:translateY(25px);
+    transition:.4s;
+}
+
+.modal-overlay.open .modal{
+    transform:none;
+}
+
+.modal-photo{
+    min-height:580px;
+    background:#171717;
+}
+
+.modal-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.modal-content{
+    position:relative;
+    padding:50px;
+}
+
+.modal-content .close{
+    position:absolute;
+    right:20px;
+    top:20px;
+}
+
+.modal-cat{
+    color:var(--gold);
+    font-size:8px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+.modal-content h2{
+    font-family:"Playfair Display",serif;
+    font-weight:400;
+    font-size:48px;
+    line-height:1;
+    margin:15px 0;
+}
+
+.modal-price{
+    color:var(--gold);
+    font-size:18px;
+}
+
+.modal-content p{
+    color:#777;
+    font-size:12px;
+    line-height:1.9;
+}
+
+.modal-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:30px;
+}
+
+.size-label{
+    color:#aaa;
+    font-size:8px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-top:25px;
+    margin-bottom:10px;
+}
+
+.size-options{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.size-option{
+    min-width:48px;
+    height:42px;
+    padding:0 12px;
+    border:1px solid var(--line);
+    background:transparent;
+    color:#ddd;
+    transition:.25s;
+}
+
+.size-option:hover,
+.size-option.active{
+    background:var(--gold);
+    color:#000;
+    border-color:var(--gold);
+}
+
+.size-error{
+    display:none;
+    color:#d88b8b;
+    font-size:10px;
+    margin-top:9px;
+}
+
+.size-error.show{display:block;}
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+.whatsapp{
+    position:fixed;
+    right:23px;
+    bottom:23px;
+    width:58px;
+    height:58px;
+    z-index:6000;
+    border-radius:50%;
+    background:#25d366;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 12px 40px rgba(37,211,102,.23);
+    transition:.3s;
+}
+
+.whatsapp:hover{
+    transform:translateY(-5px) scale(1.05);
+}
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(25px);
+    transition:1s ease;
+}
+
+.reveal.show{
+    opacity:1;
+    transform:none;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1150px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .mobile-trigger{
+        display:flex;
+    }
+
+    .hero-object{
+        right:-130px;
+        opacity:.45;
+    }
+
+    .product-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:850px){
+
+    .hero{
+        min-height:850px;
+    }
+
+    .hero h1{
+        font-size:72px;
+    }
+
+    .hero-object{
+        width:360px;
+        height:360px;
+        top:65%;
+        right:-100px;
+    }
+
+    .hero-core{
+        width:230px;
+        height:230px;
+    }
+
+    .hero-core span{
+        font-size:60px;
+    }
+
+    .category-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .category:first-child{
+        grid-column:1/-1;
+    }
+
+    .feature-strip{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .feature{
+        border-bottom:1px solid var(--line);
+    }
+
+    .editorial{
+        grid-template-columns:1fr;
+    }
+
+    .editorial-art{
+        height:480px;
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+    .journal-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stat{
+        border-bottom:1px solid var(--line);
+    }
+
+    .modal{
+        grid-template-columns:1fr;
+    }
+
+    .modal-photo{
+        min-height:350px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .header{
+        height:70px;
+    }
+
+    .nav{
+        width:94%;
+    }
+
+    .brand img{
+        width:36px;
+        height:36px;
+    }
+
+    .brand-name{
+        font-size:15px;
+    }
+
+    .brand-sub{
+        font-size:6px;
+    }
+
+    .hero{
+        min-height:820px;
+    }
+
+    .hero h1{
+        font-size:56px;
+        letter-spacing:-3px;
+    }
+
+    .hero-text{
+        max-width:330px;
+    }
+
+    .hero-object{
+        top:70%;
+        right:-110px;
+        opacity:.32;
+    }
+
+    .hero-bottom{
+        display:none;
+    }
+
+    .section{
+        padding:85px 0;
+    }
+
+    .section-head{
+        display:block;
+    }
+
+    .category-grid{
+        grid-template-columns:1fr;
+    }
+
+    .category:first-child{
+        grid-column:auto;
+    }
+
+    .category{
+        min-height:330px;
+    }
+
+    .feature-strip{
+        grid-template-columns:1fr;
+    }
+
+    .feature{
+        border-right:0;
+    }
+
+    .product-grid{
+        grid-template-columns:1fr 1fr;
+        gap:9px;
+    }
+
+    .product-image{
+        height:225px;
+    }
+
+    .product-info{
+        padding:13px;
+    }
+
+    .product-name{
+        font-size:16px;
+    }
+
+    .product-row{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .search-tools{
+        width:100%;
+        flex-direction:column;
+    }
+
+    .search,
+    .sort{
+        width:100%;
+    }
+
+    .contact-title{
+        font-size:57px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .newsletter-form{
+        flex-direction:column;
+        gap:7px;
+    }
+
+    .modal-content{
+        padding:30px;
+    }
+
+    .modal-content h2{
+        font-size:38px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     LOADER
+===================================================== -->
+
+<div id="loader">
+    <div class="loader-inner">
+        <div class="loader-brand">WALKINCHELSEA</div>
+        <div class="loader-sub">PREMIUM FOOTWEAR</div>
+        <div class="loader-line"><span></span></div>
+    </div>
+</div>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+<nav class="nav">
+
+    <a href="#home" class="brand">
+
+        <img src="logo.jpg" alt="WALKINCHELSEA">
+
+        <div>
+            <div class="brand-name">WALKINCHELSEA</div>
+            <span class="brand-sub">PREMIUM FOOTWEAR</span>
+        </div>
+
+    </a>
+
+
+    <div class="nav-links">
+
+        <a href="#home">Home</a>
+        <a href="#shop">Collection</a>
+        <a href="#chelsea">Chelsea</a>
+        <a href="#loafers">Loafers</a>
+        <a href="#new">New Arrivals</a>
+        <a href="#about">About</a>
+        <a href="#journal">Journal</a>
+        <a href="#contact">Contact</a>
+
+    </div>
+
+
+    <div class="nav-tools">
+
+        <button class="icon-btn" id="searchButton" aria-label="Search">
+            ⌕
+        </button>
+
+        <button class="icon-btn cart-btn" id="cartButton" aria-label="Bag">
+            ♧
+            <span class="cart-count" id="cartCount">0</span>
+        </button>
+
+        <button class="icon-btn mobile-trigger" id="mobileButton">
+            ☰
+        </button>
+
+    </div>
+
+</nav>
+
+</header>
+
+
+<!-- =====================================================
+     MOBILE MENU
+===================================================== -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <a href="#home">Home</a>
+    <a href="#shop">Collection</a>
+    <a href="#chelsea">Chelsea Boots</a>
+    <a href="#loafers">Loafers</a>
+    <a href="#new">New Arrivals</a>
+    <a href="#about">About</a>
+    <a href="#journal">Journal</a>
+    <a href="#contact">Contact</a>
+
+</div>
+
+
+<!-- =====================================================
+     PAGES
+===================================================== -->
+
+<main>
+
+
+<!-- =====================================================
+     HOME
+===================================================== -->
+
+<section class="page active" id="page-home">
+
+    <section class="hero">
+
+        <div class="hero-grid"></div>
+
+        <div class="hero-content">
+
+            <div class="hero-kicker">
+                EST. — PREMIUM FOOTWEAR
+            </div>
+
+            <h1>
+                WALK<br>
+                <em>IN</em><br>
+                CONFIDENCE.
+            </h1>
+
+            <p class="hero-text">
+                Refined footwear designed for people who believe
+                every step should make a statement.
+                Discover the WALKINCHELSEA collection.
+            </p>
+
+            <div class="hero-actions">
+
+                <a href="#shop" class="btn btn-gold">
+                    Explore Collection
+                </a>
+
+                <a href="#about" class="btn">
+                    Our Story
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-object">
+
+            <div class="orbit"></div>
+            <div class="orbit"></div>
+            <div class="orbit"></div>
+            <div class="orbit"></div>
+
+            <div class="hero-core">
+                <span>WC</span>
+            </div>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <small>THE COLLECTION</small>
+
+            <strong>
+                38 Selected Styles
+            </strong>
+
+        </div>
+
+
+        <div class="hero-bottom">
+
+            <span>WALKINCHELSEA</span>
+            <span>HYDERABAD — INDIA</span>
+            <span>SCROLL ↓</span>
+
+        </div>
+
+    </section>
+
+
+    <div class="marquee">
+
+        <div class="marquee-track">
+
+            <span>WALK IN CONFIDENCE</span>
+            <b>✦</b>
+
+            <span>PREMIUM FOOTWEAR</span>
+            <b>✦</b>
+
+            <span>CRAFTED FOR PRESENCE</span>
+            <b>✦</b>
+
+            <span>WALKINCHELSEA</span>
+            <b>✦</b>
+
+            <span>WALK IN CONFIDENCE</span>
+            <b>✦</b>
+
+            <span>PREMIUM FOOTWEAR</span>
+            <b>✦</b>
+
+            <span>CRAFTED FOR PRESENCE</span>
+            <b>✦</b>
+
+            <span>WALKINCHELSEA</span>
+
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-head reveal">
+
+                <div>
+
+                    <div class="eyebrow">
+                        Explore The World
+                    </div>
+
+                    <h2 class="title">
+                        Find Your<br>
+                        <em>Signature.</em>
+                    </h2>
+
+                </div>
+
+                <p class="description">
+                    From timeless Chelsea boots to sophisticated
+                    loafers, every WALKINCHELSEA piece is selected
+                    to bring character, confidence and distinction
+                    to your wardrobe.
+                </p>
+
+            </div>
+
+
+            <div class="category-grid">
+
+                <div class="category">
+
+                    <div class="category-bg"></div>
+
+                    <div class="category-content">
+
+                        <div class="eyebrow">
+                            01 — Collection
+                        </div>
+
+                        <h3>All Footwear</h3>
+
+                        <p>
+                            38 selected premium styles.
+                        </p>
+
+                        <a href="#shop">
+                            Explore →
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="category">
+
+                    <div class="category-bg"></div>
+
+                    <div class="category-content">
+
+                        <div class="eyebrow">
+                            02
+                        </div>
+
+                        <h3>Chelsea</h3>
+
+                        <p>
+                            Sharp. Timeless. Powerful.
+                        </p>
+
+                        <a href="#chelsea">
+                            Discover →
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="category">
+
+                    <div class="category-bg"></div>
+
+                    <div class="category-content">
+
+                        <div class="eyebrow">
+                            03
+                        </div>
+
+                        <h3>Loafers</h3>
+
+                        <p>
+                            Quiet luxury in every step.
+                        </p>
+
+                        <a href="#loafers">
+                            Discover →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="container">
+
+        <div class="feature-strip">
+
+            <div class="feature">
+                <div class="feature-no">01</div>
+                <h3>Premium Selection</h3>
+                <p>
+                    Curated footwear styles for modern wardrobes.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-no">02</div>
+                <h3>Indian Pricing</h3>
+                <p>
+                    Premium style with straightforward pricing.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-no">03</div>
+                <h3>Easy Enquiry</h3>
+                <p>
+                    Connect directly through WhatsApp.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-no">04</div>
+                <h3>Walk With Confidence</h3>
+                <p>
+                    Your style begins from the ground up.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="editorial">
+
+                <div class="editorial-art">
+
+                    <div class="editorial-mark">
+                        WC.
+                    </div>
+
+                </div>
+
+
+                <div class="editorial-copy">
+
+                    <div class="eyebrow">
+                        The WALKINCHELSEA Philosophy
+                    </div>
+
+                    <h2>
+                        Details<br>
+                        create<br>
+                        <em>presence.</em>
+                    </h2>
+
+                    <div class="gold-line"></div>
+
+                    <p>
+                        Great footwear is not simply something you wear.
+                        It changes the way you enter a room, the way you
+                        move and the way you carry yourself.
+                    </p>
+
+                    <a href="#about" class="btn">
+                        Discover Our Story
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="newsletter">
+
+        <div class="container">
+
+            <div class="eyebrow">
+                WALKINCHELSEA EDIT
+            </div>
+
+            <h2>
+                Enter the world of WALKINCHELSEA.
+            </h2>
+
+            <p>
+                New collections, selected styles and footwear inspiration.
+            </p>
+
+            <form class="newsletter-form"
+                  onsubmit="event.preventDefault(); alert('Thank you for joining WALKINCHELSEA.');">
+
+                <input
+                    type="email"
+                    placeholder="Your email address"
+                    required
+                >
+
+                <button class="btn btn-gold">
+                    Join
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+<!-- =====================================================
+     COLLECTION
+===================================================== -->
+
+<section class="page" id="page-shop">
+
+    <div class="page-hero">
+
+        <div class="container">
+
+            <div class="eyebrow">
+                WALKINCHELSEA — COLLECTION
+            </div>
+
+            <h1 class="page-title">
+                The<br>
+                <em>Collection.</em>
+            </h1>
+
+            <div class="page-hero-number">
+                38
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="eyebrow">
+                        Selected Styles
+                    </div>
+
+                    <h2 class="title">
+                        Your next<br>
+                        <em>statement.</em>
+                    </h2>
+
+                </div>
+
+                <p class="description">
+                    Explore all 38 selected WALKINCHELSEA styles.
+                    Every photograph follows the exact supplied
+                    product sequence.
+                </p>
+
+            </div>
+
+
+            <div class="toolbar">
+
+                <div class="filters">
+
+                    <button class="filter active" data-filter="all">
+                        All
+                    </button>
+
+                    <button class="filter" data-filter="chelsea">
+                        Chelsea Boots
+                    </button>
+
+                    <button class="filter" data-filter="loafer">
+                        Loafers
+                    </button>
+
+                    <button class="filter" data-filter="mule">
+                        Mules
+                    </button>
+
+                </div>
+
+
+                <div class="search-tools">
+
+                    <input
+                        id="searchInput"
+                        class="search"
+                        type="search"
+                        placeholder="Search products..."
+                    >
+
+                    <select id="sortSelect" class="sort">
+
+                        <option value="featured">
+                            Featured
+                        </option>
+
+                        <option value="low">
+                            Price — Low to High
+                        </option>
+
+                        <option value="high">
+                            Price — High to Low
+                        </option>
+
+                        <option value="az">
+                            Name — A to Z
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="product-grid" id="collectionGrid"></div>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+<!-- =====================================================
+     CHELSEA
+===================================================== -->
+
+<section class="page" id="page-chelsea">
+
+    <div class="page-hero">
+
+        <div class="container">
+
+            <div class="eyebrow">
+                COLLECTION 01
+            </div>
+
+            <h1 class="page-title">
+                Chelsea<br>
+                <em>Boots.</em>
+            </h1>
+
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="eyebrow">
+                        The Chelsea Edit
+                    </div>
+
+                    <h2 class="title">
+                        Built for<br>
+                        <em>presence.</em>
+                    </h2>
+
+                </div>
+
+                <p class="description">
+                    Clean silhouettes, confident profiles and
+                    distinctive colours designed for modern occasions.
+                </p>
+
+            </div>
+
+
+            <div class="product-grid" id="chelseaGrid"></div>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+<!-- =====================================================
+     LOAFERS
+===================================================== -->
+
+<section class="page" id="page-loafers">
+
+    <div class="page-hero">
+
+        <div class="container">
+
+            <div class="eyebrow">
+                COLLECTION 02
+            </div>
+
+            <h1 class="page-title">
+                The<br>
+                <em>Loafers.</em>
+            </h1>
+
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="eyebrow">
+                        The Loafer Edit
+                    </div>
+
+                    <h2 class="title">
+                        Quiet<br>
+                        <em>luxury.</em>
+                    </h2>
+
+                </div>
+
+                <p class="description">
+                    Sophisticated silhouettes designed for effortless
+                    dressing from day to evening.
+                </p>
+
+            </div>
+
+
+            <div class="product-grid" id="loafersGrid"></div>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+<!-- =====================================================
+     NEW ARRIVALS
+===================================================== -->
+
+<section class="page" id="page-new">
+
+    <div class="page-hero">
+
+        <div class="container">
+
+            <div class="eyebrow">
+                LATEST SELECTION
+            </div>
+
+            <h1 class="page-title">
+                New<br>
+                <em>Arrivals.</em>
+            </h1>
+
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="eyebrow">
+                        Fresh From The Edit
+                    </div>
+
+                    <h2 class="title">
+                        New season<br>
+                        <em>energy.</em>
+                    </h2>
+
+                </div>
+
+                <p class="description">
+                    Discover the latest styles in the WALKINCHELSEA
+                    selected collection.
+                </p>
+
+            </div>
+
+
+            <div class="product-grid" id="newGrid"></div>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section class="page" id="page-about">
+
+    <div class="page-hero">
+
+        <div class="container">
+
+            <div class="eyebrow">
+                ABOUT WALKINCHELSEA
+            </div>
+
+            <h1 class="page-title">
+                Made to<br>
+                <em>be noticed.</em>
+            </h1>
+
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="editorial">
+
+                <div class="editorial-art">
+
+                    <div class="editorial-mark">
+                        WALK<br>
+                        WITH<br>
+                        STYLE.
+                    </div>
+
+                </div>
+
+
+                <div class="editorial-copy">
+
+                    <div class="eyebrow">
+                        Our Philosophy
+                    </div>
+
+                    <h2>
+                        Footwear<br>
+                        with<br>
+                        <em>character.</em>
+                    </h2>
+
+                    <div class="gold-line"></div>
+
+                    <p>
+                        WALKINCHELSEA is built around a simple idea:
+                        footwear should complement the person wearing it,
+                        never overpower them.
+                    </p>
+
+                    <p>
+                        Our collection focuses on timeless silhouettes,
+                        refined colourways and styles that work across
+                        different occasions.
+                    </p>
+
+                    <a href="#shop" class="btn btn-gold">
+                        Explore Collection
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat">
+                    <strong>38</strong>
+                    <span>Selected Styles</span>
+                </div>
+
+                <div class="stat">
+                    <strong>03</strong>
+                    <span>Core Collections</span>
+                </div>
+
+                <div class="stat">
+                    <strong>01</strong>
+                    <span>Signature</span>
+                </div>
+
+                <div class="stat">
+                    <strong>∞</strong>
+                    <span>Ways To Walk</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+<!-- =====================================================
+     JOURNAL
+===================================================== -->
+
+<section class="page" id="page-journal">
+
+    <div class="page-hero">
+
+        <div class="container">
+
+            <div class="eyebrow">
+                WALKINCHELSEA JOURNAL
+            </div>
+
+            <h1 class="page-title">
+                Style<br>
+                <em>Notes.</em>
+            </h1>
+
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-head">
+
+                <div>
+
+                    <div class="eyebrow">
+                        Stories & Inspiration
+                    </div>
+
+                    <h2 class="title">
+                        Walk<br>
+                        <em>different.</em>
+                    </h2>
+
+                </div>
+
+                <p class="description">
+                    Inspiration for choosing, styling and wearing
+                    premium footwear with confidence.
+                </p>
+
+            </div>
+
+
+            <div class="journal-grid">
+
+                <article class="journal-card">
+
+                    <div class="journal-art">
+                        <span>01</span>
+                    </div>
+
+                    <div class="journal-copy">
+
+                        <small>Style Guide</small>
+
+                        <h3>
+                            How to style Chelsea boots.
+                        </h3>
+
+                        <p>
+                            From casual evenings to sharper occasions,
+                            Chelsea boots can become the foundation of
+                            a modern wardrobe.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="journal-card">
+
+                    <div class="journal-art">
+                        <span>02</span>
+                    </div>
+
+                    <div class="journal-copy">
+
+                        <small>Footwear</small>
+
+                        <h3>
+                            The timeless loafer.
+                        </h3>
+
+                        <p>
+                            Discover why loafers continue to remain
+                            one of the most versatile footwear styles.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="journal-card">
+
+                    <div class="journal-art">
+                        <span>03</span>
+                    </div>
+
+                    <div class="journal-copy">
+
+                        <small>WALKINCHELSEA</small>
+
+                        <h3>
+                            Why your shoes matter.
+                        </h3>
+
+                        <p>
+                            Personal style often begins with the smallest
+                            details — and footwear is one of the first
+                            details people notice.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section class="page" id="page-contact">
+
+    <div class="page-hero">
+
+        <div class="container">
+
+            <div class="eyebrow">
+                GET IN TOUCH
+            </div>
+
+            <h1 class="page-title">
+                Let's<br>
+                <em>connect.</em>
+            </h1>
+
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="contact-grid">
+
+                <div>
+
+                    <div class="eyebrow">
+                        WALKINCHELSEA
+                    </div>
+
+                    <h2 class="contact-title">
+                        Your next<br>
+                        pair is<br>
+                        <em>waiting.</em>
+                    </h2>
+
+
+                    <div class="contact-list">
+
+                        <div class="contact-item">
+
+                            <small>WhatsApp</small>
+
+                            <a
+                                href="https://wa.me/918522891829"
+                                target="_blank"
+                            >
+                                +91 85228 91829
+                            </a>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <small>Location</small>
+
+                            <p>
+                                8-2-272/4, Road No. 2,
+                                Shawkatnagar, Andhra Pradesh Real Estate,
+                                Green Valley, Banjara Hills,
+                                Hyderabad, Telangana 500034, India
+                            </p>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <small>Business Hours</small>
+
+                            <p>
+                                Open 24 Hours
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-box">
+
+                    <div class="eyebrow">
+                        DIRECT ENQUIRY
+                    </div>
+
+                    <h2>
+                        Talk to WALKINCHELSEA.
+                    </h2>
+
+                    <p>
+                        Have a question about a product, price or
+                        availability? Connect directly through WhatsApp.
+                    </p>
+
+                    <a
+                        href="https://wa.me/918522891829?text=Hello%20WALKINCHELSEA%2C%20I%20would%20like%20to%20know%20more%20about%20your%20footwear."
+                        target="_blank"
+                        class="btn btn-gold"
+                    >
+                        WhatsApp Us →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div class="footer-brand">
+
+                <h2>
+                    WALKINCHELSEA
+                </h2>
+
+                <p>
+                    Premium footwear for people who believe
+                    confidence begins with every step.
+                </p>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Explore</h4>
+
+                <a href="#home">Home</a>
+                <a href="#shop">Collection</a>
+                <a href="#chelsea">Chelsea</a>
+                <a href="#loafers">Loafers</a>
+                <a href="#new">New Arrivals</a>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Company</h4>
+
+                <a href="#about">About</a>
+                <a href="#journal">Journal</a>
+                <a href="#contact">Contact</a>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Connect</h4>
+
+                <a
+                    href="https://wa.me/918522891829"
+                    target="_blank"
+                >
+                    WhatsApp
+                </a>
+
+                <a href="#contact">
+                    Hyderabad, India
+                </a>
+
+                <a href="#shop">
+                    Shop Collection
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 WALKINCHELSEA. ALL RIGHTS RESERVED.
+            </span>
+
+            <span>
+                WALK IN CONFIDENCE.
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+     CART
+===================================================== -->
+
+<div class="cart-overlay" id="cartOverlay">
+
+    <div class="cart">
+
+        <div class="cart-header">
+
+            <h2>Your Bag</h2>
+
+            <button class="close" id="closeCart">
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="cart-items" id="cartItems"></div>
+
+
+        <div class="cart-footer">
+
+            <div class="total">
+
+                <span>Total</span>
+
+                <strong id="cartTotal">
+                    ₹0
+                </strong>
+
+            </div>
+
+            <button
+                class="btn btn-gold"
+                style="width:100%"
+                id="orderCart"
+            >
+                Send Enquiry On WhatsApp →
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PRODUCT MODAL
+===================================================== -->
+
+<div class="modal-overlay" id="modalOverlay">
+
+    <div class="modal">
+
+        <div class="modal-photo">
+
+            <img
+                id="modalImage"
+                src=""
+                alt=""
+            >
+
+        </div>
+
+
+        <div class="modal-content">
+
+            <button class="close" id="closeModal">
+                ×
+            </button>
+
+            <div class="modal-cat" id="modalCategory"></div>
+
+            <h2 id="modalName"></h2>
+
+            <div class="modal-price" id="modalPrice"></div>
+
+            <div class="gold-line"></div>
+
+            <div class="size-label">Select Size</div>
+            <div class="size-options" id="sizeOptions">
+                <button class="size-option" data-size="6">6</button>
+                <button class="size-option" data-size="7">7</button>
+                <button class="size-option" data-size="8">8</button>
+                <button class="size-option" data-size="9">9</button>
+                <button class="size-option" data-size="10">10</button>
+            </div>
+            <div class="size-error" id="sizeError">Please select a size first.</div>
+
+            <p>
+                A refined WALKINCHELSEA selection designed
+                to bring confidence, character and effortless
+                style to every step.
+            </p>
+
+            <div class="modal-actions">
+
+                <button
+                    class="btn btn-gold"
+                    id="modalAdd"
+                >
+                    Add To Bag
+                </button>
+
+                <button
+                    class="btn"
+                    id="modalWhatsApp"
+                >
+                    WhatsApp
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     WHATSAPP
+===================================================== -->
+
+<a
+    class="whatsapp"
+    href="https://wa.me/918522891829"
+    target="_blank"
+    aria-label="WhatsApp WALKINCHELSEA"
+>
+
+<svg
+    width="27"
+    height="27"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+>
+
+<path d="M20.52 3.48A11.86 11.86 0 0012.08 0C5.52 0 .18 5.34.18 11.9c0 2.1.55 4.15 1.6 5.96L.1 24l6.28-1.65a11.9 11.9 0 005.7 1.45h.01c6.55 0 11.9-5.34 11.9-11.9a11.83 11.83 0 00-3.47-8.42zM12.09 21.8h-.01a9.88 9.88 0 01-5.04-1.38l-.36-.21-3.73.98 1-3.64-.23-.37a9.88 9.88 0 01-1.52-5.28C2.2 6.44 6.64 2 12.09 2a9.85 9.85 0 017 2.9 9.86 9.86 0 012.9 7c0 5.45-4.44 9.9-9.9 9.9zm5.43-7.41c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.77-1.64-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.21 5.08 4.5.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
+
+</svg>
+
+</a>
+
+
+<script>
+
+/* =========================================================
+   PRODUCT DATABASE
+   IMPORTANT:
+   IMAGES ARE IN THE ROOT OF THE GITHUB REPOSITORY.
+   DO NOT CHANGE TO assets/products/
+========================================================= */
+
+const products = [
+
+    {
+        id:1,
+        name:"Sandstone Mule",
+        price:3000,
+        image:"n-01.jpg",
+        category:"mule"
+    },
+
+    {
+        id:2,
+        name:"Midnight Chelsea",
+        price:3500,
+        image:"n-02.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:3,
+        name:"Obsidian Chelsea",
+        price:3200,
+        image:"n-03.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:4,
+        name:"Burgundy Classic Loafer",
+        price:2400,
+        image:"n-04.jpg",
+        category:"loafer"
+    },
+
+    {
+        id:5,
+        name:"Wine Penny Loafer",
+        price:2400,
+        image:"n-05.jpg",
+        category:"loafer"
+    },
+
+    {
+        id:6,
+        name:"Amber Leather Loafer",
+        price:2400,
+        image:"n-06.jpg",
+        category:"loafer"
+    },
+
+    {
+        id:7,
+        name:"Onyx Slip-On Loafer",
+        price:2400,
+        image:"n-07.jpg",
+        category:"loafer"
+    },
+
+    {
+        id:8,
+        name:"Black Sculpted Loafer",
+        price:2400,
+        image:"n-08.jpg",
+        category:"loafer"
+    },
+
+    {
+        id:9,
+        name:"Noir Textured Loafer",
+        price:2400,
+        image:"n-09.jpg",
+        category:"loafer"
+    },
+
+    {
+        id:10,
+        name:"Burgundy Luxe Loafer",
+        price:2600,
+        image:"n-10.jpg",
+        category:"loafer"
+    },
+
+    {
+        id:11,
+        name:"Merlot Textured Loafer",
+        price:2800,
+        image:"n-11.jpg",
+        category:"loafer"
+    },
+
+    {
+        id:12,
+        name:"Black Pebble Loafer",
+        price:2800,
+        image:"n-12.jpg",
+        category:"loafer"
+    },
+
+    {
+        id:13,
+        name:"Black Classic Loafer",
+        price:2600,
+        image:"n-13.jpg",
+        category:"loafer"
+    },
+
+    {
+        id:14,
+        name:"Noir Textured Penny",
+        price:2800,
+        image:"n-14.jpg",
+        category:"loafer"
+    },
+
+    {
+        id:15,
+        name:"Black Statement Loafer",
+        price:2800,
+        image:"n-15.jpg",
+        category:"loafer"
+    },
+
+    {
+        id:16,
+        name:"Chestnut Chelsea",
+        price:3200,
+        image:"n-16.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:17,
+        name:"Jet Black Chelsea",
+        price:3200,
+        image:"n-17.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:18,
+        name:"Crimson Chelsea",
+        price:2800,
+        image:"n-18.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:19,
+        name:"Midnight Chelsea Boot",
+        price:3200,
+        image:"n-19.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:20,
+        name:"Bordeaux Strap Boot",
+        price:3800,
+        image:"n-20.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:21,
+        name:"Emerald Chelsea",
+        price:3500,
+        image:"n-21.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:22,
+        name:"Plum Chelsea",
+        price:3200,
+        image:"n-22.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:23,
+        name:"Tangerine Chelsea",
+        price:3800,
+        image:"n-23.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:24,
+        name:"Cognac Chelsea",
+        price:3800,
+        image:"n-24.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:25,
+        name:"Olive Chelsea",
+        price:3200,
+        image:"n-25.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:26,
+        name:"Black Grain Chelsea",
+        price:3500,
+        image:"n-26.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:27,
+        name:"Black Chelsea Classic",
+        price:3200,
+        image:"n-27.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:28,
+        name:"Black Chelsea Refined",
+        price:3200,
+        image:"n-28.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:29,
+        name:"Scarlet Chelsea",
+        price:3200,
+        image:"n-29.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:30,
+        name:"Tan Chelsea",
+        price:3200,
+        image:"n-30.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:31,
+        name:"Cognac Chelsea",
+        price:3500,
+        image:"n-31.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:32,
+        name:"Ivory Chelsea",
+        price:3500,
+        image:"n-32.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:33,
+        name:"Burgundy Chelsea",
+        price:3200,
+        image:"n-33.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:34,
+        name:"Mocha Chelsea",
+        price:3200,
+        image:"n-34.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:35,
+        name:"Black Premium Chelsea",
+        price:3800,
+        image:"n-35.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:36,
+        name:"Olive Premium Chelsea",
+        price:3500,
+        image:"n-36.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:37,
+        name:"Black Heritage Chelsea",
+        price:3500,
+        image:"n-37.jpg",
+        category:"chelsea"
+    },
+
+    {
+        id:38,
+        name:"Ivory Heritage Chelsea",
+        price:3500,
+        image:"n-38.jpg",
+        category:"chelsea"
+    }
+
+];
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+const WA_NUMBER = "918522891829";
+
+function money(value){
+
+    return "₹" + value.toLocaleString("en-IN");
+
+}
+
+
+function categoryLabel(category){
+
+    if(category === "chelsea") return "Chelsea Boot";
+
+    if(category === "loafer") return "Loafer";
+
+    if(category === "mule") return "Mule";
+
+    return "Footwear";
+
+}
+
+
+/* =========================================================
+   PRODUCT CARD
+========================================================= */
+
+function productHTML(product){
+
+    return `
+
+        <article class="product">
+
+            <div class="product-image">
+
+                ${
+                    product.id >= 35
+                    ?
+                    `<div class="product-tag">Premium</div>`
+                    :
+                    ""
+                }
+
+                <button
+                    class="heart"
+                    onclick="toggleWishlist(${product.id})"
+                    aria-label="Wishlist"
+                >
+                    ♡
+                </button>
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    loading="lazy"
+                    onerror="this.style.opacity='.15'"
+                >
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="product-category">
+                    ${categoryLabel(product.category)}
+                </div>
+
+                <h3 class="product-name">
+                    ${product.name}
+                </h3>
+
+
+                <div class="product-row">
+
+                    <div class="price">
+                        ${money(product.price)}
+                    </div>
+
+
+                    <div class="product-buttons">
+
+                        <button
+                            class="mini"
+                            onclick="openProduct(${product.id})"
+                            aria-label="View product"
+                        >
+                            +
+                        </button>
+
+                        <button
+                            class="mini"
+                            onclick="openProduct(${product.id})"
+                            aria-label="Choose size and add to bag"
+                        >
+                            ♧
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+/* =========================================================
+   RENDER
+========================================================= */
+
+function render(list, elementId){
+
+    const element =
+        document.getElementById(elementId);
+
+    if(!element) return;
+
+    if(!list.length){
+
+        element.innerHTML = `
+            <div class="empty">
+                No products found.
+            </div>
+        `;
+
+        return;
+
+    }
+
+    element.innerHTML =
+        list.map(productHTML).join("");
+
+}
+
+
+/* =========================================================
+   COLLECTION FILTER
+========================================================= */
+
+let currentFilter = "all";
+
+
+function renderCollection(){
+
+    let list = [...products];
+
+
+    if(currentFilter !== "all"){
+
+        list =
+            list.filter(
+                product =>
+                product.category === currentFilter
+            );
+
+    }
+
+
+    const search =
+        document
+        .getElementById("searchInput")
+        ?.value
+        .trim()
+        .toLowerCase();
+
+
+    if(search){
+
+        list =
+            list.filter(product =>
+                product.name
+                .toLowerCase()
+                .includes(search)
+            );
+
+    }
+
+
+    const sort =
+        document
+        .getElementById("sortSelect")
+        ?.value;
+
+
+    if(sort === "low"){
+
+        list.sort(
+            (a,b) => a.price - b.price
+        );
+
+    }
+
+
+    if(sort === "high"){
+
+        list.sort(
+            (a,b) => b.price - a.price
+        );
+
+    }
+
+
+    if(sort === "az"){
+
+        list.sort(
+            (a,b) =>
+            a.name.localeCompare(b.name)
+        );
+
+    }
+
+
+    render(list,"collectionGrid");
+
+}
+
+
+/* =========================================================
+   CATEGORY PAGES
+========================================================= */
+
+function renderAllCategoryPages(){
+
+    render(
+        products.filter(
+            product => product.category === "chelsea"
+        ),
+        "chelseaGrid"
+    );
+
+
+    render(
+        products.filter(
+            product => product.category === "loafer"
+        ),
+        "loafersGrid"
+    );
+
+
+    render(
+        products.slice(34),
+        "newGrid"
+    );
+
+}
+
+
+/* =========================================================
+   FILTER BUTTONS
+========================================================= */
+
+document
+.querySelectorAll(".filter")
+.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            document
+            .querySelectorAll(".filter")
+            .forEach(item =>
+                item.classList.remove("active")
+            );
+
+            button.classList.add("active");
+
+            currentFilter =
+                button.dataset.filter;
+
+            renderCollection();
+
+        }
+    );
+
+});
+
+
+document
+.getElementById("searchInput")
+.addEventListener(
+    "input",
+    renderCollection
+);
+
+
+document
+.getElementById("sortSelect")
+.addEventListener(
+    "change",
+    renderCollection
+);
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+let cart =
+    JSON.parse(
+        localStorage.getItem(
+            "walkinchelsea_cart"
+        )
+    ) || [];
+
+cart = cart.filter(item => item && item.size);
+
+
+function saveCart(){
+
+    localStorage.setItem(
+        "walkinchelsea_cart",
+        JSON.stringify(cart)
+    );
+
+    updateCart();
+
+}
+
+
+function addToCart(id){
+
+    const product =
+        products.find(
+            item => item.id === id
+        );
+
+    if(!product) return;
+
+
+    const existing =
+        cart.find(
+            item => item.id === id
+        );
+
+
+    if(existing){
+
+        existing.qty += 1;
+
+    }else{
+
+        cart.push({
+            id:id,
+            qty:1
+        });
+
+    }
+
+
+    saveCart();
+
+    openCart();
+
+}
+
+
+function removeFromCart(id){
+
+    cart =
+        cart.filter(
+            item => item.id !== id
+        );
+
+    saveCart();
+
+}
+
+
+function updateCart(){
+
+    const count =
+        cart.reduce(
+            (sum,item) =>
+            sum + item.qty,
+            0
+        );
+
+
+    document
+    .getElementById("cartCount")
+    .textContent = count;
+
+
+    const container =
+        document.getElementById(
+            "cartItems"
+        );
+
+
+    if(!cart.length){
+
+        container.innerHTML = `
+
+            <div style="
+                text-align:center;
+                padding:75px 20px;
+                color:#666;
+            ">
+
+                <div style="
+                    font-size:42px;
+                    margin-bottom:15px;
+                ">
+                    ♧
+                </div>
+
+                Your bag is empty.
+
+            </div>
+
+        `;
+
+        document
+        .getElementById("cartTotal")
+        .textContent = "₹0";
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+
+    container.innerHTML =
+        cart.map(item => {
+
+            const product =
+                products.find(
+                    p => p.id === item.id
+                );
+
+            if(!product) return "";
+
+
+            total +=
+                product.price * item.qty;
+
+
+            return `
+
+                <div class="cart-item">
+
+                    <img
+                        src="${product.image}"
+                        alt="${product.name}"
+                    >
+
+                    <div>
+
+                        <h4>
+                            ${product.name}
+                        </h4>
+
+                        <p>
+                            ${money(product.price)} · Size ${item.size}
+                            × ${item.qty}
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="remove"
+                        onclick="removeFromCart(${product.id})"
+                    >
+                        Remove
+                    </button>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+
+    document
+    .getElementById("cartTotal")
+    .textContent =
+        money(total);
+
+}
+
+
+/* =========================================================
+   CART OPEN/CLOSE
+========================================================= */
+
+function openCart(){
+
+    document
+    .getElementById("cartOverlay")
+    .classList.add("open");
+
+    document
+    .body
+    .classList.add("lock");
+
+}
+
+
+function closeCart(){
+
+    document
+    .getElementById("cartOverlay")
+    .classList.remove("open");
+
+    document
+    .body
+    .classList.remove("lock");
+
+}
+
+
+document
+.getElementById("cartButton")
+.addEventListener(
+    "click",
+    openCart
+);
+
+
+document
+.getElementById("closeCart")
+.addEventListener(
+    "click",
+    closeCart
+);
+
+
+document
+.getElementById("cartOverlay")
+.addEventListener(
+    "click",
+    event => {
+
+        if(
+            event.target.id ===
+            "cartOverlay"
+        ){
+
+            closeCart();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   WHATSAPP CART ORDER
+========================================================= */
+
+document
+.getElementById("orderCart")
+.addEventListener(
+    "click",
+    () => {
+
+        if(!cart.length){
+
+            alert(
+                "Your bag is empty."
+            );
+
+            return;
+
+        }
+
+
+        let message =
+            "Hello WALKINCHELSEA!%0A%0A";
+
+        message +=
+            "I am interested in these products:%0A%0A";
+
+
+        cart.forEach(item => {
+
+            const product =
+                products.find(
+                    p => p.id === item.id
+                );
+
+            if(product){
+
+                message +=
+                    "• " +
+                    encodeURIComponent(
+                        product.name
+                    ) +
+                    " — " +
+                    encodeURIComponent(
+                        money(product.price)
+                    ) +
+                    " × " +
+                    item.qty +
+                    "%0A";
+
+            }
+
+        });
+
+
+        message +=
+            "%0APlease share availability and details.";
+
+
+        window.open(
+            "https://wa.me/" +
+            WA_NUMBER +
+            "?text=" +
+            message,
+            "_blank"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   PRODUCT MODAL
+========================================================= */
+
+let selectedProduct = null;
+let selectedSize = null;
+
+function openProduct(id){
+
+    const product =
+        products.find(
+            item => item.id === id
+        );
+
+    if(!product) return;
+
+    selectedProduct = product;
+    selectedSize = null;
+
+    document
+        .getElementById("modalImage")
+        .src = product.image;
+
+    document
+        .getElementById("modalImage")
+        .alt = product.name;
+
+    document
+        .getElementById("modalName")
+        .textContent = product.name;
+
+    document
+        .getElementById("modalPrice")
+        .textContent = money(product.price);
+
+    document
+        .getElementById("modalCategory")
+        .textContent = categoryLabel(product.category);
+
+    document
+        .querySelectorAll(".size-option")
+        .forEach(button => button.classList.remove("active"));
+
+    document
+        .getElementById("sizeError")
+        .classList.remove("show");
+
+    document
+        .getElementById("modalOverlay")
+        .classList.add("open");
+
+    document
+        .body
+        .classList.add("lock");
+}
+
+function closeModal(){
+    document
+        .getElementById("modalOverlay")
+        .classList.remove("open");
+
+    document
+        .body
+        .classList.remove("lock");
+}
+
+document
+    .getElementById("closeModal")
+    .addEventListener("click", closeModal);
+
+document
+    .getElementById("modalOverlay")
+    .addEventListener("click", event => {
+        if(event.target.id === "modalOverlay"){
+            closeModal();
+        }
+    });
+
+document
+    .querySelectorAll(".size-option")
+    .forEach(button => {
+        button.addEventListener("click", () => {
+            selectedSize = button.dataset.size;
+
+            document
+                .querySelectorAll(".size-option")
+                .forEach(item => item.classList.remove("active"));
+
+            button.classList.add("active");
+
+            document
+                .getElementById("sizeError")
+                .classList.remove("show");
+        });
+    });
+
+document
+    .getElementById("modalAdd")
+    .addEventListener("click", () => {
+        if(!selectedProduct) return;
+
+        if(!selectedSize){
+            document
+                .getElementById("sizeError")
+                .classList.add("show");
+            return;
+        }
+
+        addToCart(selectedProduct.id, selectedSize);
+        closeModal();
+    });
+
+document
+    .getElementById("modalWhatsApp")
+    .addEventListener("click", () => {
+        if(!selectedProduct) return;
+
+        if(!selectedSize){
+            document
+                .getElementById("sizeError")
+                .classList.add("show");
+            return;
+        }
+
+        const message =
+            "Hello WALKINCHELSEA!%0A%0A" +
+            "I am interested in " +
+            encodeURIComponent(selectedProduct.name) +
+            " priced at " +
+            encodeURIComponent(money(selectedProduct.price)) +
+            ".%0ASize: " +
+            encodeURIComponent(selectedSize) +
+            ".%0A%0APlease share availability and details.";
+
+        window.open(
+            "https://wa.me/" +
+            WA_NUMBER +
+            "?text=" +
+            message,
+            "_blank"
+        );
+    });
+
+/* =========================================================
+   WISHLIST
+========================================================= */
+
+function toggleWishlist(id){
+
+    const key =
+        "wc_wishlist_" + id;
+
+    const current =
+        localStorage.getItem(key);
+
+
+    localStorage.setItem(
+        key,
+        current === "1"
+        ? "0"
+        : "1"
+    );
+
+}
+
+
+/* =========================================================
+   ROUTER
+========================================================= */
+
+const pageNames = [
+    "home",
+    "shop",
+    "chelsea",
+    "loafers",
+    "new",
+    "about",
+    "journal",
+    "contact"
+];
+
+
+function showPage(name){
+
+    if(
+        !pageNames.includes(name)
+    ){
+
+        name = "home";
+
+    }
+
+
+    document
+    .querySelectorAll(".page")
+    .forEach(page =>
+        page.classList.remove("active")
+    );
+
+
+    const target =
+        document.getElementById(
+            "page-" + name
+        );
+
+
+    if(target){
+
+        target.classList.add("active");
+
+    }
+
+
+    document
+    .querySelectorAll(".nav-links a")
+    .forEach(link => {
+
+        link.classList.toggle(
+            "active",
+            link.getAttribute("href") ===
+            "#" + name
+        );
+
+    });
+
+
+    document
+    .getElementById("mobileMenu")
+    .classList.remove("open");
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"instant"
+    });
+
+
+    if(name === "shop"){
+
+        setTimeout(
+            renderCollection,
+            30
+        );
+
+    }
+
+}
+
+
+function route(){
+
+    const name =
+        location.hash
+        .replace("#","")
+        .trim() ||
+        "home";
+
+
+    showPage(name);
+
+}
+
+
+window.addEventListener(
+    "hashchange",
+    route
+);
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+document
+.getElementById("mobileButton")
+.addEventListener(
+    "click",
+    () => {
+
+        document
+        .getElementById("mobileMenu")
+        .classList.toggle("open");
+
+    }
+);
+
+
+document
+.querySelectorAll(".mobile-menu a")
+.forEach(link => {
+
+    link.addEventListener(
+        "click",
+        () => {
+
+            document
+            .getElementById("mobileMenu")
+            .classList.remove("open");
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   SEARCH BUTTON
+========================================================= */
+
+document
+.getElementById("searchButton")
+.addEventListener(
+    "click",
+    () => {
+
+        location.hash = "shop";
+
+
+        setTimeout(
+            () => {
+
+                const input =
+                    document.getElementById(
+                        "searchInput"
+                    );
+
+
+                if(input){
+
+                    input.focus();
+
+                }
+
+            },
+            350
+        );
+
+    }
+);
+
+
+/* =========================================================
+   ESC KEY
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(event.key === "Escape"){
+
+            closeCart();
+            closeModal();
+
+            document
+            .getElementById("mobileMenu")
+            .classList.remove("open");
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+const revealObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        entry.target
+                        .classList
+                        .add("show");
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.1
+        }
+    );
+
+
+function startReveal(){
+
+    document
+    .querySelectorAll(".reveal")
+    .forEach(
+        element =>
+        revealObserver.observe(element)
+    );
+
+}
+
+
+/* =========================================================
+   INITIAL LOAD
+========================================================= */
+
+renderCollection();
+
+renderAllCategoryPages();
+
+updateCart();
+
+startReveal();
+
+route();
+
+
+window.addEventListener(
+    "load",
+    () => {
+
+        setTimeout(
+            () => {
+
+                document
+                .getElementById("loader")
+                .classList
+                .add("hide");
+
+            },
+            900
+        );
+
+    }
+);
+
+</script>
+
+</body>
+</html>
